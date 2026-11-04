@@ -17,9 +17,9 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Radar — find the software houses you've never heard of",
+  title: "Radar — every opening you find, and how you fit",
   description:
-    "Radar watches the careers pages of Pakistani software houses, spots new internships and jobs, and explains which ones fit your resume.",
+    "Keep the internships and jobs you find in one place, see how well each one fits your resume, and track every application.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
