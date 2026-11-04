@@ -34,6 +34,21 @@ body {
   text-transform: uppercase;
 }
 
+/* Text inputs, selects and textareas: square, thin border, white fill. */
+@utility input {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  background: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0;
+  &::placeholder {
+    color: var(--color-cloud);
+  }
+  &[aria-invalid="true"] {
+    border-color: var(--color-danger);
+  }
+}
+
 /* Visible keyboard focus everywhere (WCAG 2.4.7). */
 :focus-visible {
   outline: 2px solid var(--color-rose);
