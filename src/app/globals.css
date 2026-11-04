@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/*
+  Design tokens (docs/DESIGN.md). Tailwind v4 turns every --color-* into
+  utilities like bg-evening / text-rose / border-line, and --font-* into
+  font-sans / font-accent.
+*/
+@theme {
+  --color-evening: #192231;
+  --color-stormy: #494e6b;
+  --color-cloud: #98878f;
+  --color-sunset: #985e6d;
+  --color-rose: #d9a3ae;
+  --color-beige: #efe6d8;
+  --color-sand: #f5efe6;
+  --color-paper: #fffcf7;
+  --color-line: #e3d8c8;
+  --color-danger: #a33b3b;
+
+  --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
+  --font-accent: var(--font-cormorant), Georgia, serif;
+}
+
+body {
+  background: var(--color-sand);
+  color: var(--color-evening);
+}
+
+/* Thin, spaced-out uppercase label used across the app. */
+@utility label-caps {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* Visible keyboard focus everywhere (WCAG 2.4.7). */
+:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+/* Radar sweep: one turn every 6 s. Turned off for people who ask for less motion. */
+@keyframes radar-sweep {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes radar-blip {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+.radar-sweep {
+  transform-origin: 200px 200px;
+  animation: radar-sweep 6s linear infinite;
+}
+.radar-blip {
+  animation: radar-blip 3s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .radar-sweep,
+  .radar-blip {
+    animation: none;
+  }
+}
