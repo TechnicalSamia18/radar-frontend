@@ -34,7 +34,7 @@ const ROOT = new URL("../../", import.meta.url);
 const OUT = new URL("public/feed/", ROOT);
 const UA = "RadarWatcher/1.0 (student project; checks careers pages once a day; +https://github.com/TechnicalSamia18/radar-frontend)";
 const TIMEOUT = 15_000;
-const PAUSE = 1_500; // between requests to the same site
+const PAUSE = Number(process.env.WATCH_PAUSE ?? 1_500); // between requests to the same site
 const PARALLEL_SITES = 5;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -55,8 +55,9 @@ async function allowed(url) {
   const u = new URL(url);
   if (!robotsCache.has(u.origin)) {
     const r = await get(`${u.origin}/robots.txt`, "text/plain");
-    // A missing robots.txt means no rules. A server error means we don't know, so be careful and skip.
-    robotsCache.set(u.origin, r.ok ? parseRobots(r.body) : r.status >= 500 || r.status === 0 ? null : []);
+    // Missing robots.txt (404) = no rules. Server error (5xx) = can't tell, so stay away today.
+    // No answer at all = the site is down; the page request will fail and say so.
+    robotsCache.set(u.origin, r.ok ? parseRobots(r.body) : r.status >= 500 ? null : []);
     await sleep(PAUSE);
   }
   const rules = robotsCache.get(u.origin);
@@ -106,8 +107,9 @@ async function checkCompany(company, previous) {
     failures: 0,
     note: null,
   };
-  const failed = (source, note) => ({ ...base, source, note, failures: (previous?.failures ?? 0) + 1 });
   const jobs = [];
+  // Every return is { company, jobs }; a failure adds one to the consecutive-failure count.
+  const failed = (source, note) => ({ company: { ...base, source, note, failures: (previous?.failures ?? 0) + 1 }, jobs: [] });
 
   try {
     // 1. A board set by hand in companies.json wins (like the "use my link" override).
@@ -186,7 +188,7 @@ async function checkCompany(company, previous) {
 
     return { company: { ...base, source: base.emails.length ? "email_only" : "nothing_found" }, jobs };
   } catch (e) {
-    return { company: failed("unreachable", `Check failed: ${e.message}`), jobs };
+    return failed("unreachable", `Check failed: ${e.message}`);
   }
 }
 
