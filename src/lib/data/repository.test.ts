@@ -39,6 +39,12 @@ describe("local repository", () => {
     expect(repo.load()).toEqual({ ok: true, state: profileState });
   });
 
+  it("loads data saved before live openings existed (missing new fields get defaults)", () => {
+    const old = { version: 1, profile: null, companies: [], openings: [], isDemo: false };
+    const r = createLocalRepository(fakeStorage({ [STORAGE_KEY]: JSON.stringify(old) })).load();
+    expect(r).toEqual({ ok: true, state: EMPTY_STATE });
+  });
+
   it("reports damaged JSON instead of crashing", () => {
     const repo = createLocalRepository(fakeStorage({ [STORAGE_KEY]: "{not json" }));
     expect(repo.load()).toMatchObject({ ok: false, reason: "corrupt" });

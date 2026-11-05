@@ -81,7 +81,19 @@ export const radarStateSchema = z.object({
   openings: z.array(openingSchema).max(5_000),
   /** True while the fictional sample data is loaded. */
   isDemo: z.boolean(),
+  /** Live openings you saved: live id → your opening's id. (Added later; older saved data gets an empty map.) */
+  feedLinks: z.record(z.string().max(200), z.string().max(40)).default({}),
+  /** Live openings you marked "not interested". */
+  dismissedFeedIds: z.array(z.string().max(200)).max(5_000).default([]),
 });
 export type RadarState = z.infer<typeof radarStateSchema>;
 
-export const EMPTY_STATE: RadarState = { version: STATE_VERSION, profile: null, companies: [], openings: [], isDemo: false };
+export const EMPTY_STATE: RadarState = {
+  version: STATE_VERSION,
+  profile: null,
+  companies: [],
+  openings: [],
+  isDemo: false,
+  feedLinks: {},
+  dismissedFeedIds: [],
+};

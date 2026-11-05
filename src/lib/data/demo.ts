@@ -201,5 +201,5 @@ export function buildDemoState(now: Date): RadarState {
     ),
   ];
 
-  return { version: STATE_VERSION, profile, companies, openings, isDemo: true };
+  return { version: STATE_VERSION, profile, companies, openings, isDemo: true, feedLinks: {}, dismissedFeedIds: [] };
 }
