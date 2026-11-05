@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useId, useState, type FormEvent, type KeyboardEvent } from "react";
 import { DataGate, PageHeader } from "@/components/data-gate";
+import { Field } from "@/components/field";
 import { FitBadge } from "@/components/fit-badge";
 import { AlertIcon, ImageIcon, XIcon } from "@/components/icons";
 import type { RadarState } from "@/lib/data/schema";
@@ -391,16 +392,4 @@ function toPreview(e: ExtractedOpening, s: Source) {
     deadlineStatus: e.deadlineStatus,
     deadlineText: e.deadlineText,
   };
-}
-
-/** Label + control + error, wired together with ids for screen readers. */
-function Field({ label, error, children }: { label: string; error?: string; children: (id: string) => React.ReactNode }) {
-  const id = useId();
-  return (
-    <div>
-      <label htmlFor={id} className="text-sm text-stormy">{label}</label>
-      <div className="mt-1">{children(id)}</div>
-      {error && <p className="mt-1 text-sm text-danger">{error}</p>}
-    </div>
-  );
 }
