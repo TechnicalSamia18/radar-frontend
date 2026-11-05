@@ -17,6 +17,8 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  // Absolute base for links and previews when the site is shared.
+  metadataBase: new URL("https://radar-frontend-pi.vercel.app"),
   title: "Radar — real openings from Pakistani software houses, and how you fit",
   description:
     "Radar checks Pakistani software houses every morning, scores new openings against your resume, and tracks your applications.",

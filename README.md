@@ -6,7 +6,7 @@ Radar checks Pakistani software houses every morning. When a company publishes i
 
 The website runs **in your browser**: no account, no server, no database. Your resume is read on your device and never uploaded. The daily check is a small free job on GitHub Actions.
 
-**Live site:** _link added after deployment_
+**Live site:** [radar-frontend-pi.vercel.app](https://radar-frontend-pi.vercel.app): open **Live openings** for today's real openings, or **Profile** to add your resume.
 
 **Quick start** (Node.js 22+, no keys or accounts):
 
