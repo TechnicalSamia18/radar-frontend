@@ -5,6 +5,17 @@ import type { CompaniesFeed, OpeningsFeed } from "./schema";
 
 export const STALE_AFTER_HOURS = 48;
 
+// "checked 3 hours ago": a relative time is easier to judge at a glance than
+// a clock time. A timestamp in the future (clock skew) reads as "just now".
+export function checkedAgo(iso: string, now: Date): string {
+  const minutes = Math.floor((now.getTime() - new Date(iso).getTime()) / 60_000);
+  const plural = (n: number, unit: string) => `${n} ${unit}${n === 1 ? "" : "s"} ago`;
+  if (minutes < 1) return "just now";
+  if (minutes < 60) return plural(minutes, "minute");
+  if (minutes < 24 * 60) return plural(Math.floor(minutes / 60), "hour");
+  return plural(Math.floor(minutes / (24 * 60)), "day");
+}
+
 export function feedProblems(openings: OpeningsFeed, companies: CompaniesFeed, now: Date): string[] {
   const problems: string[] = [];
   const hours = (now.getTime() - new Date(openings.generatedAt).getTime()) / 3_600_000;

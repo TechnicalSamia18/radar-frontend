@@ -10,6 +10,7 @@ import type { RadarState } from "@/lib/data/schema";
 import { newId, update } from "@/lib/data/store";
 import { dismissFeedItem, saveFeedItem, savedOpeningId } from "@/lib/feed/actions";
 import { feedItemToOpening, isFresh } from "@/lib/feed/convert";
+import { checkedAgo } from "@/lib/feed/health";
 import type { WatchedCompany } from "@/lib/feed/schema";
 import { useFeed } from "@/lib/feed/use-feed";
 import { matchOpening } from "@/lib/openings/match";
@@ -67,7 +68,8 @@ export function LiveSection({ state, now }: { state: RadarState; now: Date }) {
           <RadarMark className="h-4 w-4 text-sunset" /> Live openings for you
         </h2>
         <p className="text-sm text-stormy">
-          Watching {companies.companies.length} companies · checked {checkedAt}
+          Watching {companies.companies.length} companies · checked{" "}
+          <time dateTime={openings.generatedAt} title={checkedAt}>{checkedAgo(openings.generatedAt, now)}</time> ({checkedAt})
           {fresh > 0 && <span className="text-sunset"> · {fresh} new in the last 3 days</span>}
         </p>
       </div>
