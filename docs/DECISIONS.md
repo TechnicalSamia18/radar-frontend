@@ -21,3 +21,9 @@
 ## ADR-004: Shared code copied from the Radar repo
 - **Date:** 2026-11-04 · **Status:** Accepted
 - The design system, landing page, skill detector and resume reader were written first in `TechnicalSamia18/Radar` and copied here with their tests, then adapted to run in the browser.
+
+## ADR-005: Live openings from a daily watcher (still no server)
+- **Date:** 2026-11-05 · **Status:** Accepted [USER]
+- **Context:** the paste-only version didn't solve the real problem (finding openings). A coverage check of 45 companies (docs/coverage/results.md) showed public hiring-platform feeds give clean, real openings; plain careers pages are too varied to parse reliably.
+- **Decision:** a dependency-free Node watcher runs daily on GitHub Actions, reads public job feeds, fingerprints plain careers pages to detect changes, and commits `public/feed/*.json`. The website reads those files and scores them in the browser. The watcher's commits are authored by github-actions[bot].
+- **Consequences:** still free and serverless; coverage limited to companies that publish openly (3 of 43 feeds on day one, 33 relevant openings); careers-page companies give "changed" alerts, not parsed jobs. Fit score gained a seniority cap and a thin-evidence discount after real data ranked a lead role first.

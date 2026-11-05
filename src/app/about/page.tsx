@@ -6,7 +6,7 @@ const PROMISES = [
   ["Your data stays with you", "Your resume, profile and applications are saved in this browser only. There's no account and no server copy. Clear it any time."],
   ["You always apply yourself", "Radar opens the real application or your email app. It never fills in a form or sends anything in your name."],
   ["It never guesses", "If a post doesn't state something, Radar says so. Unclear dates are flagged instead of trusted."],
-  ["No scraping", "No LinkedIn, Facebook or WhatsApp. You bring the openings; Radar helps you judge and track them."],
+  ["Polite checking", "Once a day per company, robots.txt respected, an honest name in every request, and no LinkedIn, Facebook or WhatsApp."],
 ];
 
 export default function AboutPage() {
@@ -21,9 +21,9 @@ export default function AboutPage() {
             or lose track of where they applied.
           </p>
           <p className="leading-relaxed text-stormy">
-            Radar was built by a CS student to keep every opening in one place, see honestly where they stand, and
-            follow up on time. This version runs entirely in the browser. A later version may also find companies and
-            check their careers pages automatically.
+            Radar was built by a CS student to find those openings, see honestly where you stand, and follow up on time.
+            A small free job checks companies every morning; everything about you stays in your browser. It covers the
+            companies that publish their jobs openly, and you can paste the rest.
           </p>
         </div>
       </section>

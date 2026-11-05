@@ -6,8 +6,8 @@ import { ShieldIcon, UploadIcon } from "@/components/icons";
 const STEPS = [
   {
     n: "01",
-    title: "Collect",
-    body: "Paste any opening you find on a company's careers page. Radar pulls out the role, skills, deadline and how to apply.",
+    title: "Watch",
+    body: "Every morning Radar checks Pakistani software houses' public job feeds and careers pages, and tells you what's new or changed.",
   },
   {
     n: "02",
@@ -33,12 +33,12 @@ export default function LandingPage() {
             <div>
               <p className="label-caps text-cloud">For CS students in Pakistan</p>
               <h1 className="mt-6 text-5xl leading-[1.1] font-normal sm:text-6xl">
-                Every opening you find,{" "}
+                Real openings from Pakistani software houses,{" "}
                 <em className="font-accent text-rose">and exactly how you fit.</em>
               </h1>
               <p className="mt-8 max-w-xl text-lg leading-relaxed text-beige/85">
-                Radar reads the internships and jobs you collect from software houses, scores each one against your
-                resume, tells you why, and keeps track of every application.
+                Radar checks software houses every morning, scores each new opening against your resume, tells you
+                why, and keeps track of every application, including ones you find yourself.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
@@ -48,14 +48,14 @@ export default function LandingPage() {
                   <UploadIcon /> Upload your resume
                 </Link>
                 <Link
-                  href="/demo"
+                  href="/live"
                   className="label-caps inline-flex items-center border border-beige/70 px-8 py-4 transition-colors hover:bg-beige hover:text-evening"
                 >
-                  Try the demo
+                  See today&apos;s openings
                 </Link>
               </div>
               <p className="mt-6 flex items-center gap-2 text-sm text-cloud">
-                <ShieldIcon /> Your resume never leaves your browser. You always apply yourself.
+                <ShieldIcon /> Your resume never leaves your browser. No LinkedIn scraping. You always apply yourself.
               </p>
             </div>
             <RadarGraphic />

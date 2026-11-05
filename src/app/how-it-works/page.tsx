@@ -6,20 +6,20 @@ export const metadata = { title: "How it works — Radar" };
 const STEPS = [
   {
     n: "01",
-    title: "Collect",
-    body: "Paste any opening you find: from a company's careers page, an email, or a post someone shared. Radar pulls out the role, internship or job, city, work mode, skills, experience, CGPA, deadline and how to apply.",
-    detail: "Anything the post doesn't say stays empty and shows as “Not stated”. Dates that could mean two things, like 05/11, are flagged for you to check. Image-only ads are saved with their link, and Radar doesn't pretend to read them.",
+    title: "Watch",
+    body: "Every morning at about 6am, Radar visits each software house on its list. When a company publishes its jobs through a hiring platform with an open feed (Workable, Greenhouse, Lever and similar), Radar reads the openings directly: real titles, cities and apply links.",
+    detail: "For companies with a plain careers page, Radar watches the page and tells you when it changes, without guessing what changed. It respects each site's robots.txt, identifies itself honestly, and never touches LinkedIn, Facebook or WhatsApp.",
   },
   {
     n: "02",
     title: "Match",
     body: "Upload your resume once. It's read in your browser, never uploaded, and you confirm the skills it finds. Each opening then gets a fit score with the reasons: what you have, what's missing.",
-    detail: "Eligibility warnings are one line each: graduates only, a minimum CGPA, years of experience, a city you didn't pick. A warning never hides an opening; you decide.",
+    detail: "Eligibility warnings are one line each: graduates only, a minimum CGPA, years of experience, a senior role, a city you didn't pick. A warning never hides an opening; you decide. Found one somewhere else? Paste it and it's scored the same way.",
   },
   {
     n: "03",
     title: "Track",
-    body: "Open the real application or your email app with one click: Radar never applies for you. Then move each opening from Saved to Applied, Interview and Offer or Rejected.",
+    body: "Save the openings you want. Open the real application with one click, since Radar never applies for you, then move each one from Saved to Applied, Interview and Offer or Rejected.",
     detail: "Every change is dated. Notes keep contacts and interview prep together, and Radar nudges you when an application has had no update for a week. Export everything to a spreadsheet at any time.",
   },
 ];
@@ -27,7 +27,7 @@ const STEPS = [
 export default function HowItWorksPage() {
   return (
     <main className="flex flex-1 flex-col">
-      <SiteHero label="How it works" title="Three steps," accent="no scraping, no bots." />
+      <SiteHero label="How it works" title="Three steps," accent="no LinkedIn, no bots applying for you." />
       <section className="flex-1 bg-beige">
         <ol className="mx-auto max-w-6xl divide-y divide-line px-6 sm:px-10">
           {STEPS.map((s) => (
@@ -42,8 +42,8 @@ export default function HowItWorksPage() {
           ))}
         </ol>
         <div className="mx-auto flex max-w-6xl flex-wrap gap-4 px-6 pb-16 sm:px-10">
-          <Link href="/demo" className="label-caps bg-sunset px-8 py-4 text-sand hover:bg-sunset/85">Try the demo</Link>
-          <Link href="/openings/new" className="label-caps border border-evening px-8 py-4 hover:bg-evening hover:text-beige">Add your first opening</Link>
+          <Link href="/live" className="label-caps bg-sunset px-8 py-4 text-sand hover:bg-sunset/85">See today&apos;s openings</Link>
+          <Link href="/profile" className="label-caps border border-evening px-8 py-4 hover:bg-evening hover:text-beige">Upload your resume</Link>
         </div>
       </section>
       <SiteFooter />

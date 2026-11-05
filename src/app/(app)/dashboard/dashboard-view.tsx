@@ -66,7 +66,7 @@ function Dashboard({ state }: { state: RadarState }) {
           </p>
           <h1 className="mt-2 text-3xl font-normal sm:text-4xl">{greeting(now)}</h1>
           <p className="mt-2 text-stormy">
-            {state.openings.length} opening{state.openings.length === 1 ? "" : "s"} · {state.companies.length} compan{state.companies.length === 1 ? "y" : "ies"}
+            {state.openings.length === 0 ? "You're not tracking any openings yet." : `You're tracking ${state.openings.length} opening${state.openings.length === 1 ? "" : "s"}.`}
           </p>
         </div>
         <Link href="/openings/new" className="label-caps inline-flex items-center gap-2 bg-sunset px-6 py-3 text-sand hover:bg-sunset/85">

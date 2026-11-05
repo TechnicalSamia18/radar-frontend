@@ -111,11 +111,11 @@ export function SiteFooter() {
   return (
     <footer className="bg-evening text-cloud">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-8 text-sm sm:px-10">
-        <p>Radar · a student project. Everything you add stays in your browser.</p>
+        <p>Radar · a student project. Openings checked daily; your data stays in your browser.</p>
         <nav aria-label="Footer" className="flex gap-6">
           <Link href="/how-it-works" className="hover:text-beige">How it works</Link>
           <Link href="/about" className="hover:text-beige">About</Link>
-          <Link href="/demo" className="hover:text-beige">Try the demo</Link>
+          <Link href="/live" className="hover:text-beige">Today&apos;s openings</Link>
         </nav>
       </div>
     </footer>
