@@ -1,9 +1,27 @@
 // Pure helpers for the daily watcher (no network here, so they're unit-tested).
 // The network part is in watch.mjs.
 
-export const PK_LOCATION = /pakistan|lahore|karachi|islamabad|rawalpindi|peshawar|faisalabad|multan|\bremote\b|anywhere/i;
+const PK_PLACE = /pakistan|lahore|karachi|islamabad|rawalpindi|peshawar|faisalabad|multan|\bpk\b/i;
+const REMOTE = /\b(remote|anywhere|worldwide|global)\b/i;
+// Remote roles tied to another country or region aren't open to someone in Pakistan.
+const OTHER_PLACE =
+  /\b(united states|usa|u\.s\.|us|canada|united kingdom|uk|england|ireland|europe|eu|emea|americas|latam|north america|germany|france|spain|portugal|netherlands|poland|romania|india|uae|dubai|saudi|ksa|qatar|singapore|australia|new zealand|japan|brazil|mexico|austin|new york|san francisco|london|berlin|toronto)\b/i;
+
+/** In Pakistan, or remote without being limited to another country. */
+export function isPakistanOrRemote(location) {
+  const l = String(location ?? "");
+  if (PK_PLACE.test(l)) return true;
+  return REMOTE.test(l) && !OTHER_PLACE.test(l);
+}
+
+const NOT_TECH = /\b(business develop(er|ment)|bd|management trainee|sales|marketing|account (executive|manager)|recruit(er|ment)|hr\b|human resources|finance|legal|graphic designer|content writer|seo)\b/i;
 export const TECH_TITLE =
-  /\b(engineer|engineering|developer|programmer|software|frontend|front-end|backend|back-end|full[- ]?stack|qa|sqa|test|tester|devops|data|ml|ai|mobile|android|ios|flutter|react|web|cloud|security|designer|ui|ux|intern(ship)?|trainee)\b/i;
+  /\b(engineer|engineering|developer|programmer|software|frontend|front-end|backend|back-end|full[- ]?stack|qa|sqa|test|tester|devops|data|ml|ai|mobile|android|ios|flutter|react|web|cloud|security|(ui|ux|product) designer|ui|ux|it)\b/i;
+
+/** A software/IT role (not sales, HR, marketing or graphic design). */
+export function isTechRole(title) {
+  return TECH_TITLE.test(title) && !NOT_TECH.test(title);
+}
 export const CAREER_LINK = /(career|\bjobs?\b|join[-_ ]?(us|our)|hiring|vacanc|opportunit|work[-_ ]with[-_ ]us|open[-_ ]positions)/i;
 export const SKIPPED_HOSTS = /(^|\.)(linkedin|facebook|fb|whatsapp|indeed|instagram|twitter|x|rozee)\.(com|pk)$/i;
 
@@ -146,7 +164,7 @@ export function platformByName(name) {
 /** Keeps tech roles in Pakistan or remote; trims descriptions. */
 export function relevantJobs(jobs) {
   return jobs
-    .filter((j) => j.title && j.url && /^https?:\/\//.test(j.url) && PK_LOCATION.test(j.location ?? "") && TECH_TITLE.test(j.title))
+    .filter((j) => j.title && j.url && /^https?:\/\//.test(j.url) && isPakistanOrRemote(j.location) && isTechRole(j.title))
     .map((j) => ({ ...j, title: String(j.title).trim().slice(0, 160), location: String(j.location ?? "").trim().slice(0, 120), description: String(j.description ?? "").slice(0, MAX_DESCRIPTION) }));
 }
 

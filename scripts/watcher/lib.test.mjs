@@ -4,6 +4,8 @@ import {
   fingerprintText,
   hasImageAd,
   hiringEmails,
+  isPakistanOrRemote,
+  isTechRole,
   iframesIn,
   parseRobots,
   platformByName,
@@ -121,5 +123,16 @@ describe("change detection (REQ-021)", () => {
     const a = fingerprintText(["Frontend Developer"]);
     const b = fingerprintText(["Frontend Developer", "Backend Developer"]);
     expect(await sha256(a)).not.toBe(await sha256(b));
+  });
+});
+
+describe("relevance filters", () => {
+  it("keeps Pakistan and open remote roles, drops remote roles tied to other countries", () => {
+    for (const ok of ["Lahore · Pakistan", "Islamabad", "Pakistan - Remote", "Remote", "Anywhere", "Hybrid - Islamabad & Lahore"]) expect(isPakistanOrRemote(ok), ok).toBe(true);
+    for (const no of ["United States - Remote", "Canada - Remote", "Remote - EMEA", "Berlin", "London (Remote)", ""]) expect(isPakistanOrRemote(no), no).toBe(false);
+  });
+  it("keeps software roles, drops business development, sales and graphic design", () => {
+    for (const ok of ["Associate Software Engineer- MERN", "Software Engineer -Frontend", "QA Intern", "Product Designer", "Data Analyst II", "DevOps Engineer"]) expect(isTechRole(ok), ok).toBe(true);
+    for (const no of ["Associate Business Developer", "Senior Graphic Designer", "Account Executive", "Marketing Lead", "Technical Recruiter", "BD Coordination Intern", "Management Trainee Officer"]) expect(isTechRole(no), no).toBe(false);
   });
 });
