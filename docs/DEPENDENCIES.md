@@ -13,6 +13,8 @@ Scan: `npm audit`.
 | tailwindcss + @tailwindcss/turbopack | dev | 4.3.3 | Styling | MIT | 2026-07-16 | 2026-11-04 | clean |
 | typescript | dev | 5.9.3 | Types | Apache-2.0 | 2025-09-30 | 2026-11-04 | clean |
 | vitest | dev | 5.0.5 | Unit tests | MIT | 2026-10-15 | 2026-11-04 | clean |
+| @playwright/test | dev | 1.63.0 | Page tests in Chromium (matches the local browser build) | Apache-2.0 | 2026-09-04 | 2026-11-05 | clean |
+| actions/checkout, actions/setup-node | CI | v7.0.1, v7.1.0 (pinned to commit SHA) | GitHub Actions CI | MIT | — | — | — |
 | eslint + eslint-config-next | dev | 9.39.5 / 16.4.3 | Lint | MIT | — | 2026-11-04 | 1 moderate (below) |
 
 ## Open advisories (`npm audit`, 2026-11-04)
