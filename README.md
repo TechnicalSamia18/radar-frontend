@@ -8,6 +8,14 @@ The website runs **in your browser**: no account, no server, no database. Your r
 
 **Live site:** _link added after deployment_
 
+**Quick start** (Node.js 22+, no keys or accounts):
+
+```bash
+npm ci && npm run dev   # then open http://localhost:3000
+```
+
+**Why it's built this way:** [DECISION-RECORD.md](DECISION-RECORD.md) covers the three decisions that would be hardest to undo, what each one costs, and where they've proved awkward.
+
 ![Live openings, scored against a resume](docs/screenshots/live.png)
 
 ## Why I built it
@@ -140,4 +148,4 @@ Keyboard-usable throughout, with a "Skip to content" link, visible focus outline
 
 ## Project notes
 
-[`docs/`](docs/) holds the product plan ([`PRD.md`](docs/PRD.md)), decisions ([`DECISIONS.md`](docs/DECISIONS.md)), risks, the coverage check ([`coverage/results.md`](docs/coverage/results.md)) and progress ([`PROJECT_STATE.md`](docs/PROJECT_STATE.md)). The commit history shows the build step by step, including the moment the project changed course from paste-only to live openings.
+[`DECISION-RECORD.md`](DECISION-RECORD.md) explains the three biggest decisions and their costs. [`docs/`](docs/) holds the product plan ([`PRD.md`](docs/PRD.md)), decisions ([`DECISIONS.md`](docs/DECISIONS.md)), risks, the coverage check ([`coverage/results.md`](docs/coverage/results.md)) and progress ([`PROJECT_STATE.md`](docs/PROJECT_STATE.md)). The commit history shows the build step by step, including the moment the project changed course from paste-only to live openings.
