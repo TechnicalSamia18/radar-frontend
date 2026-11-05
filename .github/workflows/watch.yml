@@ -25,6 +25,7 @@ jobs:
           node-version: 22
       - run: node scripts/watcher/watch.mjs
       - name: Commit the updated feed (only if something changed)
+        # Only after a successful check: a failed run keeps yesterday's results on the site.
         run: |
           git config user.name "Samia Rehman"
           git config user.email "samia.rehman246@gmail.com"

@@ -3,6 +3,7 @@
 // careers pages that changed, and the watched-companies status list.
 import Link from "next/link";
 import { useState } from "react";
+import { FeedHealth } from "@/components/feed-health";
 import { AlertIcon, ExternalIcon, RadarMark } from "@/components/icons";
 import { LiveCard } from "@/components/live-card";
 import type { RadarState } from "@/lib/data/schema";
@@ -70,6 +71,7 @@ export function LiveSection({ state, now }: { state: RadarState; now: Date }) {
           {fresh > 0 && <span className="text-sunset"> · {fresh} new in the last 3 days</span>}
         </p>
       </div>
+      <FeedHealth openings={openings} companies={companies} now={now} />
       <p aria-live="polite" className="min-h-6 text-sm text-stormy">{notice}</p>
       {best.length === 0 ? (
         <p className="border border-dashed border-cloud bg-paper p-6 text-stormy">

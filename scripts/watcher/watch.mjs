@@ -254,3 +254,14 @@ try {
   const totals = await save(results.size === companies.length);
   console.log(`\nSaved ${totals.companies} companies and ${totals.openings} openings (${results.size}/${companies.length} checked this run).`);
 }
+
+// Fail loudly (red run + GitHub's failure email) instead of "succeeding" with nothing done.
+// The workflow then skips the commit, so the site keeps yesterday's results.
+const unreachable = [...results.values()].filter((r) => r.company.source === "unreachable").length;
+if (companies.length === 0) {
+  console.error("FAILED: data/companies.json is empty or missing, so nothing was checked.");
+  process.exitCode = 1;
+} else if (unreachable > companies.length / 2) {
+  console.error(`FAILED: ${unreachable} of ${companies.length} companies couldn't be reached. Is the network or the list broken?`);
+  process.exitCode = 1;
+}

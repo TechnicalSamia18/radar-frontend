@@ -5,15 +5,16 @@ import openings from "./fixtures/openings.json";
 /**
  * Serves a small, fixed copy of the watcher's files instead of the real
  * (daily-changing) ones, so tests always see the same live data.
- * Folio3's careers page is marked as changed today.
+ * Folio3's careers page is marked as changed today. The check time defaults
+ * to "now" so the out-of-date warning only appears when a test asks for it.
  */
-export async function mockFeed(page: Page, { fail = false } = {}) {
-  await page.route("**/feed/openings.json", (route) => (fail ? route.abort() : route.fulfill({ json: openings })));
+export async function mockFeed(page: Page, { fail = false, checkedAt = new Date().toISOString() } = {}) {
+  await page.route("**/feed/openings.json", (route) => (fail ? route.abort() : route.fulfill({ json: { ...openings, generatedAt: checkedAt } })));
   await page.route("**/feed/companies.json", (route) =>
     fail
       ? route.abort()
       : route.fulfill({
-          json: { ...companies, companies: companies.companies.map((c) => (c.name === "Folio3" ? { ...c, pageChangedAt: new Date().toISOString() } : c)) },
+          json: { ...companies, generatedAt: checkedAt, companies: companies.companies.map((c) => (c.name === "Folio3" ? { ...c, pageChangedAt: new Date().toISOString() } : c)) },
         }),
   );
 }
