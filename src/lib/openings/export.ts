@@ -24,7 +24,8 @@ function toCsv(header: string[], rows: Array<Array<string | number | boolean | n
 }
 
 export function openingsCsv(state: RadarState, now: Date): string {
-  const header = ["Company", "Title", "Type", "City", "Work mode", "Fit", "Has", "Missing", "Warnings", "Deadline", "Status", "Status changed", "Apply link", "Apply email", "Source", "Notes", "First seen"];
+  // The last five columns exist so a backup can be restored exactly (see import.ts).
+  const header = ["Company", "Title", "Type", "City", "Work mode", "Fit", "Has", "Missing", "Warnings", "Deadline", "Status", "Status changed", "Apply link", "Apply email", "Source", "Notes", "First seen", "Skills", "Experience (years)", "Graduates only", "Minimum CGPA", "Deadline status"];
   const rows = state.openings.map((o) => {
     const fit = matchOpening(o, state.profile, now);
     const last = o.statusHistory[o.statusHistory.length - 1];
@@ -46,6 +47,11 @@ export function openingsCsv(state: RadarState, now: Date): string {
       o.sourceUrl,
       o.notes,
       o.firstSeen.slice(0, 10),
+      o.skills.join("; "),
+      o.experienceYears,
+      o.graduatesOnly ? "Yes" : "No",
+      o.minCgpa,
+      o.deadlineStatus,
     ];
   });
   return toCsv(header, rows);

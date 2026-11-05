@@ -142,7 +142,7 @@ Keyboard-usable throughout, with a "Skip to content" link, visible focus outline
 ## Known limitations
 
 - Coverage depends on companies publishing jobs openly (see the numbers above).
-- Your saved data lives in one browser. Clearing site data or switching devices starts fresh; use **Export CSV** as a backup.
+- Your saved data lives in one browser. Clearing site data or switching devices starts fresh. Use **Export CSV** on My openings as a backup, and **Import CSV** to restore it in another browser.
 - Fit scores come from a skills dictionary, not AI. A post that names few skills gets a cautious score.
 - Dates are read day-first (20/11 = 20 November). Dates that could mean two things are flagged for you to check.
 

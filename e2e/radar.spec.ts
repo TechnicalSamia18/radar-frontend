@@ -95,6 +95,22 @@ test("CSV export downloads every opening", async ({ page }) => {
   expect(download.suggestedFilename()).toMatch(/^radar-openings-\d{4}-\d{2}-\d{2}\.csv$/);
 });
 
+test("an exported backup can be restored in a fresh browser", async ({ page, browser }) => {
+  await loadDemo(page);
+  await page.goto("/openings");
+  const [download] = await Promise.all([page.waitForEvent("download"), page.getByRole("button", { name: "Export CSV" }).click()]);
+  const file = await download.path();
+
+  const fresh = await browser.newPage();
+  await mockFeed(fresh);
+  await fresh.goto("/openings");
+  await expect(fresh.getByRole("heading", { name: "No openings yet" })).toBeVisible();
+  await fresh.locator('input[type="file"]').setInputFiles(file);
+  await expect(fresh.getByText("Restored 7 openings.")).toBeVisible();
+  await expect(fresh.getByText("Showing 6 of 7 openings")).toBeVisible();
+  await fresh.close();
+});
+
 test("damaged saved data shows a clear error and can be reset", async ({ page }) => {
   await page.goto("/");
   await page.evaluate(() => localStorage.setItem("radar:v1", "{broken"));
