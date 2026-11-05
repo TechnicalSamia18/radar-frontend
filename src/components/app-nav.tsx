@@ -9,7 +9,8 @@ import { BuildingIcon, GridIcon, ListIcon, MenuIcon, PlusIcon, RadarMark, UserIc
 
 const NAV: Array<{ href: string; label: string; icon: ReactNode }> = [
   { href: "/dashboard", label: "Dashboard", icon: <GridIcon /> },
-  { href: "/openings", label: "Openings", icon: <ListIcon /> },
+  { href: "/live", label: "Live openings", icon: <RadarMark className="h-4 w-4" /> },
+  { href: "/openings", label: "My openings", icon: <ListIcon /> },
   { href: "/companies", label: "Companies", icon: <BuildingIcon /> },
   { href: "/profile", label: "Profile", icon: <UserIcon /> },
 ];

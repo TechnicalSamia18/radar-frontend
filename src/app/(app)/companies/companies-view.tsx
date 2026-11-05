@@ -5,6 +5,7 @@ import { useRef, useState, type FormEvent } from "react";
 import { companyStatus, TONE_CLASS } from "@/lib/companies/status";
 import { DataGate, PageHeader } from "@/components/data-gate";
 import { Field } from "@/components/field";
+import { WatchedList } from "@/components/watched-list";
 import { AlertIcon, CheckIcon, DownloadIcon, ExternalIcon, PlusIcon, UploadIcon } from "@/components/icons";
 import { CSV_TEMPLATE, importCompanies, MAX_IMPORT_BYTES, type ImportReport } from "@/lib/companies/csv";
 import { companiesCsv, downloadText } from "@/lib/openings/export";
@@ -35,6 +36,7 @@ function Companies({ state }: { state: RadarState }) {
   const [editing, setEditing] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [report, setReport] = useState<ImportReport | null>(null);
+  const [now] = useState(() => new Date());
   const [importError, setImportError] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -72,7 +74,7 @@ function Companies({ state }: { state: RadarState }) {
     <>
       <PageHeader
         label="Companies"
-        title="Software houses you're watching"
+        title="Software houses on your radar"
         action={
           <div className="flex flex-wrap gap-3">
             <button type="button" onClick={() => { setAdding(true); setEditing(null); }} className="label-caps inline-flex items-center gap-2 bg-sunset px-5 py-3 text-sand hover:bg-sunset/85">
@@ -93,8 +95,8 @@ function Companies({ state }: { state: RadarState }) {
           </div>
         }
       >
-        Companies are added automatically when you save an opening. You can also add them by hand or import a list
-        (for example one you exported from a directory).{" "}
+        The daily watcher checks the companies below every morning. Your own list further down holds companies from
+        openings you saved or pasted; add to it by hand or import a CSV.{" "}
         <button type="button" onClick={downloadTemplate} className="inline-flex items-center gap-1 text-evening underline">
           <DownloadIcon /> CSV template
         </button>
@@ -106,6 +108,10 @@ function Companies({ state }: { state: RadarState }) {
         {report && <ImportResult report={report} onClose={() => setReport(null)} />}
       </div>
 
+      <WatchedList now={now} />
+
+      <h2 className="label-caps mt-12 text-stormy">Your own list ({state.companies.length})</h2>
+
       {adding && (
         <CompanyForm
           state={state}
@@ -115,12 +121,12 @@ function Companies({ state }: { state: RadarState }) {
       )}
 
       {sorted.length === 0 && !adding ? (
-        <div className="mt-8 border border-dashed border-cloud bg-paper p-8">
-          <h2 className="text-2xl font-normal">No companies yet</h2>
-          <p className="mt-2 max-w-xl text-stormy">Add the software houses you want to keep an eye on, or import a CSV with a name column.</p>
+        <div className="mt-4 border border-dashed border-cloud bg-paper p-8">
+          <h2 className="text-2xl font-normal">Nothing in your own list yet</h2>
+          <p className="mt-2 max-w-xl text-stormy">Companies appear here when you save or paste an opening. You can also add one by hand or import a CSV with a name column.</p>
         </div>
       ) : (
-        <ul className="mt-8 divide-y divide-line border border-line bg-paper">
+        <ul className="mt-4 divide-y divide-line border border-line bg-paper">
           {sorted.map((c) =>
             editing === c.id ? (
               <li key={c.id} className="p-2">

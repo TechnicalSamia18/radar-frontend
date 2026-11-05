@@ -33,8 +33,8 @@ function Openings({ state }: { state: RadarState }) {
   return (
     <>
       <PageHeader
-        label="Openings"
-        title="Everything you've collected"
+        label="My openings"
+        title="Openings you're tracking"
         action={
           <div className="flex flex-wrap gap-3">
             <Link href="/openings/new" className="label-caps inline-flex items-center gap-2 bg-sunset px-5 py-3 text-sand hover:bg-sunset/85">
@@ -55,7 +55,10 @@ function Openings({ state }: { state: RadarState }) {
       {state.openings.length === 0 ? (
         <div className="mt-8 border border-dashed border-cloud bg-paper p-8">
           <h2 className="text-2xl font-normal">No openings yet</h2>
-          <p className="mt-2 text-stormy">Paste the first job post you&apos;ve found and Radar will read it for you.</p>
+          <p className="mt-2 text-stormy">
+            Save one from <Link href="/live" className="text-evening underline">Live openings</Link>, or paste a job post you&apos;ve found
+            elsewhere and Radar will read it for you.
+          </p>
         </div>
       ) : (
         <>

@@ -2,9 +2,9 @@
 // Dashboard (REQ-050): greeting, four numbers, best-fit openings, watched companies.
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { companyStatus, TONE_CLASS } from "@/lib/companies/status";
 import { DataGate } from "@/components/data-gate";
 import { ClockIcon, PlusIcon } from "@/components/icons";
+import { LiveSection, WatchedCompanies } from "@/components/live-section";
 import { OpeningCard } from "@/components/opening-card";
 import type { RadarState } from "@/lib/data/schema";
 import { resetAll, update } from "@/lib/data/store";
@@ -76,24 +76,27 @@ function Dashboard({ state }: { state: RadarState }) {
 
       <p aria-live="polite" className="mt-4 min-h-6 text-sm text-stormy">{message}</p>
 
+      {!state.profile && (
+        <p className="border border-line bg-paper p-4 text-stormy">
+          No resume yet, so fit scores are off. <Link href="/profile" className="text-evening underline">Upload your resume</Link>
+        </p>
+      )}
+
+      <LiveSection state={state} now={now} />
+
       {empty ? (
-        <FirstRun hasProfile={!!state.profile} />
+        <FirstRun />
       ) : (
         <>
-          {/* Stat cards */}
-          <dl className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+          {/* Stat cards: your own tracker */}
+          <h2 className="label-caps mt-10 text-stormy">Your applications</h2>
+          <dl className="mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4">
             <Stat label="New this week" value={stats.newThisWeek} dark />
             <Stat label="Good fit" value={stats.goodFit} accent />
             <Stat label="Applied" value={stats.applied} />
             <Stat label="Follow up" value={stats.followUp} />
           </dl>
 
-          {!state.profile && (
-            <p className="mt-6 border border-line bg-paper p-4 text-stormy">
-              No resume yet, so fit scores are off.{" "}
-              <Link href="/profile" className="text-evening underline">Upload your resume</Link>
-            </p>
-          )}
 
           {followUps.length > 0 && (
             <section aria-labelledby="fu-h" className="mt-10">
@@ -115,13 +118,12 @@ function Dashboard({ state }: { state: RadarState }) {
 
           <section aria-labelledby="new-h" className="mt-10">
             <div className="flex items-baseline justify-between gap-4">
-              <h2 id="new-h" className="label-caps text-stormy">Openings for you</h2>
+              <h2 id="new-h" className="label-caps text-stormy">Saved, not applied yet</h2>
               {ranked.length > 5 && <Link href="/openings" className="text-sm underline">See all {ranked.length}</Link>}
             </div>
             {ranked.length === 0 ? (
               <p className="mt-4 border border-dashed border-cloud bg-paper p-6 text-stormy">
-                No open openings right now. Everything is applied, missed or closed.{" "}
-                <Link href="/openings/new" className="text-evening underline">Add one you&apos;ve found</Link>
+                Nothing waiting: everything you saved is applied, missed or closed.
               </p>
             ) : (
               <div className="mt-4 space-y-4">
@@ -132,33 +134,7 @@ function Dashboard({ state }: { state: RadarState }) {
             )}
           </section>
 
-          <section aria-labelledby="co-h" className="mt-10">
-            <div className="flex items-baseline justify-between gap-4">
-              <h2 id="co-h" className="label-caps text-stormy">Watched companies</h2>
-              <Link href="/companies" className="text-sm underline">Manage</Link>
-            </div>
-            {state.companies.length === 0 ? (
-              <p className="mt-4 border border-dashed border-cloud bg-paper p-6 text-stormy">
-                No companies yet. They&apos;re added automatically when you save an opening, or you can{" "}
-                <Link href="/companies" className="text-evening underline">add one by hand</Link>.
-              </p>
-            ) : (
-              <ul className="mt-4 divide-y divide-line border border-line bg-paper">
-                {state.companies.slice(0, 8).map((c) => {
-                  const st = companyStatus(c);
-                  const count = state.openings.filter((o) => o.companyId === c.id && o.status === "saved").length;
-                  return (
-                    <li key={c.id} className="flex flex-col gap-1 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
-                      <span>{c.name}{c.city && <span className="text-stormy"> · {c.city}</span>}</span>
-                      <span className={`text-sm sm:text-right ${count > 0 ? "text-sunset" : TONE_CLASS[st.tone]}`}>
-                        {count > 0 ? `${count} open opening${count === 1 ? "" : "s"}` : st.text}
-                      </span>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-          </section>
+          <WatchedCompanies now={now} />
         </>
       )}
     </>
@@ -174,25 +150,20 @@ function Stat({ label, value, dark, accent }: { label: string; value: number; da
   );
 }
 
-function FirstRun({ hasProfile }: { hasProfile: boolean }) {
+function FirstRun() {
   return (
-    <section className="mt-6 border border-dashed border-cloud bg-paper p-8">
-      <h2 className="text-2xl font-normal">Nothing here yet</h2>
+    <section className="mt-10 border border-dashed border-cloud bg-paper p-8">
+      <h2 className="text-2xl font-normal">You&apos;re not tracking anything yet</h2>
       <p className="mt-2 max-w-xl text-stormy">
-        Paste the first opening you&apos;ve found, or load sample data to see how Radar works.
+        Save a live opening above, or paste one you found elsewhere. Want to see the tracker full first? Load sample data.
       </p>
       <div className="mt-6 flex flex-wrap gap-3">
         <Link href="/openings/new" className="label-caps inline-flex items-center gap-2 bg-sunset px-6 py-3 text-sand hover:bg-sunset/85">
           <PlusIcon /> Add opening
         </Link>
         <Link href="/demo" className="label-caps border border-evening px-6 py-3 hover:bg-evening hover:text-beige">
-          Try the demo
+          Load sample data
         </Link>
-        {!hasProfile && (
-          <Link href="/profile" className="label-caps border border-evening px-6 py-3 hover:bg-evening hover:text-beige">
-            Upload your resume
-          </Link>
-        )}
       </div>
     </section>
   );

@@ -1,9 +1,12 @@
 // Scores an opening against the profile and explains why (REQ-040–042).
 //
 // Score out of 100:
-//   70 — share of the post's skills you have
+//   70 — share of the post's skills you have. If the post names fewer than 3
+//        skills, this part is scaled down (one matching skill says little).
 //   15 — internship/job matches what you're looking for
 //   15 — experience asked for (0 or not stated = full marks)
+// Senior, lead, manager and "experienced" roles are capped at 44 (low fit):
+// Radar is for students and fresh graduates, for whom they aren't realistic.
 // Warnings never hide an opening; each is one plain sentence (REQ-041).
 import type { Opening, Profile } from "@/lib/data/schema";
 
@@ -15,6 +18,7 @@ export type Fit =
 
 type MatchInput = Pick<
   Opening,
+  | "title"
   | "skills"
   | "type"
   | "experienceYears"
@@ -26,6 +30,10 @@ type MatchInput = Pick<
   | "deadlineStatus"
   | "deadlineText"
 >;
+
+/** Senior titles usually need years of experience, even when the post doesn't say how many. */
+export const SENIOR_TITLE = /\b(senior|sr\.?|lead|principal|staff|manager|director|head of|vp|architect|experienced)\b/i;
+const SENIOR_CAP = 44;
 
 export function fitLevel(score: number): FitLevel {
   if (score >= 70) return "good";
@@ -46,6 +54,8 @@ export function eligibilityWarnings(o: MatchInput, profile: Profile | null, now:
   }
   if (o.experienceYears !== null && o.experienceYears >= 1) {
     w.push(`Asks for ${o.experienceYears}+ year${o.experienceYears === 1 ? "" : "s"} of experience.`);
+  } else if (SENIOR_TITLE.test(o.title)) {
+    w.push("It's a senior role, so the fit is capped: these usually need several years of experience.");
   }
   if (profile && o.location && o.workMode !== "remote" && profile.cities.length > 0 && !profile.cities.includes(o.location as never)) {
     w.push(`It's in ${o.location}, which isn't one of your cities.`);
@@ -69,12 +79,14 @@ export function matchOpening(o: MatchInput, profile: Profile | null, now: Date =
   const has = o.skills.filter((s) => mine.has(s.toLowerCase()));
   const missing = o.skills.filter((s) => !mine.has(s.toLowerCase()));
 
-  const skillPoints = 70 * (has.length / o.skills.length);
+  const evidence = Math.min(1, o.skills.length / 3);
+  const skillPoints = 70 * (has.length / o.skills.length) * evidence;
   const typePoints =
     o.type === "unclear" || profile.seeking === "both" ? (o.type === "unclear" ? 8 : 15) : o.type === profile.seeking ? 15 : 0;
   const expPoints = o.experienceYears === null || o.experienceYears === 0 ? 15 : o.experienceYears === 1 ? 8 : 0;
 
-  const score = Math.round(skillPoints + typePoints + expPoints);
+  const raw = Math.round(skillPoints + typePoints + expPoints);
+  const score = SENIOR_TITLE.test(o.title) ? Math.min(raw, SENIOR_CAP) : raw;
   return { kind: "scored", score, level: fitLevel(score), has, missing, warnings: eligibilityWarnings(o, profile, now) };
 }
 

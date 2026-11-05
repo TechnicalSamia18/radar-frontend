@@ -17,6 +17,7 @@ const profile: Profile = {
 };
 
 const base = {
+  title: "Frontend Intern",
   skills: ["React", "JavaScript", "Git", "TypeScript"],
   type: "internship" as const,
   experienceYears: null,
@@ -85,6 +86,21 @@ describe("matchOpening", () => {
     const strong = matchOpening(base, profile, NOW);
     const weaker = matchOpening({ ...base, type: "job", experienceYears: 3 }, profile, NOW);
     expect(strong.kind === "scored" && weaker.kind === "scored" && weaker.score < strong.score).toBe(true);
+  });
+});
+
+describe("seniority and thin evidence", () => {
+  it("caps senior, lead and 'experienced' roles at a low fit, with a warning", () => {
+    for (const title of ["Lead Support Engineer", "Senior Software Engineer", "Software Engineer (Experienced)"]) {
+      const fit = matchOpening({ ...base, title, type: "job" }, { ...profile, seeking: "both" }, NOW);
+      expect(fit.kind === "scored" && fit.score, title).toBe(44);
+      expect(fit.kind === "scored" && fit.level, title).toBe("low");
+      expect(fit.kind === "scored" && fit.warnings, title).toContain("It's a senior role, so the fit is capped: these usually need several years of experience.");
+    }
+  });
+  it("scales down the skill score when the post names fewer than 3 skills", () => {
+    const one = matchOpening({ ...base, skills: ["React"] }, profile, NOW);
+    expect(one.kind === "scored" && one.score).toBe(Math.round(70 / 3 + 30)); // 1 of 1 skills, but only 1 named
   });
 });
 

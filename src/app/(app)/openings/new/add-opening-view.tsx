@@ -169,6 +169,7 @@ function CheckStep({ state, source, extracted, onBack }: { state: RadarState; so
     const obj = openingFormToObject(new FormData(e.currentTarget));
     setPreview((p) => ({
       ...p,
+      title: obj.title,
       type: (["internship", "job", "unclear"] as const).find((t) => t === obj.type) ?? "unclear",
       location: obj.location || null,
       workMode: (["onsite", "hybrid", "remote"] as const).find((w) => w === obj.workMode) ?? null,
@@ -381,6 +382,7 @@ function CheckStep({ state, source, extracted, onBack }: { state: RadarState; so
 
 function toPreview(e: ExtractedOpening, s: Source) {
   return {
+    title: e.title ?? "",
     skills: e.skills,
     type: e.type,
     experienceYears: e.experienceYears,
