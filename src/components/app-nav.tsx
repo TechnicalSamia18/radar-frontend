@@ -90,7 +90,10 @@ export function AppNav() {
             <AddOpeningButton />
           </div>
           <p className="mt-auto text-xs leading-relaxed text-cloud">
-            Your data stays in this browser.
+            Your data stays in this browser.{" "}
+            <a href="https://github.com/TechnicalSamia18/radar-frontend" target="_blank" rel="noopener noreferrer" className="underline hover:text-beige">
+              Source code<span className="sr-only"> (opens GitHub in a new tab)</span>
+            </a>
           </p>
         </div>
       </aside>

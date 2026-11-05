@@ -140,6 +140,11 @@ test("keyboard users can skip straight to the content", async ({ page, isMobile 
   await expect(page).toHaveURL(/#main$/);
 });
 
+test("the home page links to the source code", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByRole("link", { name: /Source code/ })).toHaveAttribute("href", "https://github.com/TechnicalSamia18/radar-frontend");
+});
+
 test("unknown pages show the 404 screen", async ({ page }) => {
   const res = await page.goto("/no-such-page");
   expect(res?.status()).toBe(404);
