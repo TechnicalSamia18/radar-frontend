@@ -55,6 +55,14 @@ describe("local repository", () => {
     expect(createLocalRepository(fakeStorage({ [STORAGE_KEY]: tampered })).load()).toMatchObject({ ok: false, reason: "corrupt" });
   });
 
+  it("rejects stored openings with javascript: or data: links", () => {
+    const opening = { id: "o1", companyId: null, companyName: "X", title: "Dev", type: "job", location: null, workMode: null, skills: [], experienceYears: null, graduatesOnly: false, minCgpa: null, deadline: null, deadlineText: null, deadlineStatus: "none", applyUrl: "javascript:alert(1)", applyEmail: null, sourceUrl: null, adKind: "text", rawText: "", firstSeen: "2026-11-05T10:00:00.000Z", status: "saved", statusHistory: [], notes: "" };
+    const stored = JSON.stringify({ ...EMPTY_STATE, openings: [opening] });
+    expect(createLocalRepository(fakeStorage({ [STORAGE_KEY]: stored })).load()).toMatchObject({ ok: false, reason: "corrupt" });
+    const fixed = JSON.stringify({ ...EMPTY_STATE, openings: [{ ...opening, applyUrl: "https://ok.example.com" }] });
+    expect(createLocalRepository(fakeStorage({ [STORAGE_KEY]: fixed })).load().ok).toBe(true);
+  });
+
   it("refuses to save invalid data", () => {
     const repo = createLocalRepository(fakeStorage());
     const bad = { ...profileState, profile: { ...profileState.profile!, cgpa: 9 } };

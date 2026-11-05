@@ -5,6 +5,8 @@ import { z } from "zod";
 import { CITIES, MAX_SKILLS, REMOTE_PREFERENCE, SEEKING } from "@/lib/profile/options";
 
 const isoDate = z.iso.datetime({ offset: true });
+/** Links must be http(s): stops javascript: and data: links however the data arrived (form, import, hand-edited storage). */
+const httpUrl = (max: number) => z.url({ protocol: /^https?$/ }).max(max);
 const skill = z.string().min(1).max(40);
 const shortText = (max: number) => z.string().max(max);
 
@@ -29,8 +31,8 @@ export const companySchema = z.object({
   id: z.string().min(1).max(40),
   name: shortText(120).min(1),
   city: shortText(60).nullable(),
-  website: z.url().max(300).nullable(),
-  careersUrl: z.url().max(300).nullable(),
+  website: httpUrl(300).nullable(),
+  careersUrl: httpUrl(300).nullable(),
   hiringEmail: z.email().max(200).nullable(),
   careersStatus: z.enum(CAREERS_STATUS),
   lastChecked: isoDate.nullable(),
@@ -60,9 +62,9 @@ export const openingSchema = z.object({
   deadline: z.iso.date().nullable(), // YYYY-MM-DD
   deadlineText: shortText(80).nullable(),
   deadlineStatus: z.enum(DEADLINE_STATUS),
-  applyUrl: z.url().max(500).nullable(),
+  applyUrl: httpUrl(500).nullable(),
   applyEmail: z.email().max(200).nullable(),
-  sourceUrl: z.url().max(500).nullable(),
+  sourceUrl: httpUrl(500).nullable(),
   /** "image": the job ad was only an image/PDF, so nothing could be read (REQ-024 → fit unknown). */
   adKind: z.enum(["text", "image"]),
   rawText: shortText(20_000),

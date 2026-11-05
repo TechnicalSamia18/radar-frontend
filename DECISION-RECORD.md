@@ -25,7 +25,7 @@ The website has no server of its own and no database. The resume, profile, saved
 - **Less risk.** The login library I'd have used (Auth.js v5) was still a beta release.
 
 ### What it costs
-- **The data lives in one browser on one device.** No phone and laptop in sync. Clearing the browser's site data wipes everything. The only backup is a CSV export, and there's no matching import for openings, so a backup can't be restored.
+- **The data lives in one browser on one device.** No phone and laptop in sync. Clearing the browser's site data wipes everything. Moving to another browser means exporting a CSV and importing it there by hand. (Until 5 Nov there was no import, so a backup couldn't be restored at all; that was added in pull request #2.)
 - **No reminders outside the app.** Without a server, Radar can't email you that an application needs a follow-up. You only see the nudge when you open the dashboard.
 - **Every change to the data format is a migration in every user's browser.** I can't fix stored data centrally. When I later added "saved from the live feed" and "hidden" fields, I had to make the app quietly fill in defaults for data saved before the change. Every future change carries the same chore.
 - **Small storage.** Browsers give each site only a few megabytes, enough for thousands of openings but not for keeping full job descriptions forever.

@@ -2,12 +2,14 @@
 // Openings "workbook" (PRD screen 2): every opening, combined filters that
 // apply as you change them (REQ-051), sorting, and CSV export (REQ-052).
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { DataGate, PageHeader } from "@/components/data-gate";
 import { FitBadge } from "@/components/fit-badge";
-import { AlertIcon, DownloadIcon, PlusIcon } from "@/components/icons";
+import { AlertIcon, CheckIcon, DownloadIcon, PlusIcon, UploadIcon } from "@/components/icons";
 import { formatDate } from "@/components/opening-card";
 import type { RadarState } from "@/lib/data/schema";
+import { newId, update } from "@/lib/data/store";
+import { importOpenings, MAX_OPENINGS_IMPORT_BYTES, type OpeningsImportReport } from "@/lib/openings/import";
 import { downloadText, openingsCsv } from "@/lib/openings/export";
 import { activeFilterCount, filterOpenings, NO_FILTERS, type Filters, type SortKey } from "@/lib/openings/filter";
 import { needsFollowUp, STATUS_LABEL } from "@/lib/openings/tracker";
@@ -26,6 +28,19 @@ function Openings({ state }: { state: RadarState }) {
   const [f, setF] = useState<Filters>(NO_FILTERS);
   const [sort, setSort] = useState<SortKey>("fit");
   const [filtersOpen, setFiltersOpen] = useState(false); // phones only; always shown on desktop
+  const [importResult, setImportResult] = useState<{ report?: OpeningsImportReport; error?: string } | null>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  // Restore a backup made with Export CSV. Adds openings; never replaces existing ones.
+  async function onImport(file: File | undefined) {
+    setImportResult(null);
+    if (!file) return;
+    if (file.size > MAX_OPENINGS_IMPORT_BYTES) return setImportResult({ error: "That file is over 2 MB. Is it really a Radar export?" });
+    const result = importOpenings(state, await file.text(), new Date(), newId);
+    if ("error" in result) return setImportResult({ error: result.error });
+    const saved = update(() => result.state);
+    setImportResult(saved.ok ? { report: result.report } : { error: saved.message });
+  }
   const rows = filterOpenings(state.openings, state.profile, f, sort, now);
   const set = <K extends keyof Filters>(k: K, v: Filters[K]) => setF((p) => ({ ...p, [k]: v }));
   const filtered = activeFilterCount(f) > 0;
@@ -48,16 +63,62 @@ function Openings({ state }: { state: RadarState }) {
             >
               <DownloadIcon /> Export CSV
             </button>
+            <button
+              type="button"
+              onClick={() => fileRef.current?.click()}
+              className="label-caps inline-flex items-center gap-2 border border-evening px-5 py-3 hover:bg-evening hover:text-beige"
+            >
+              <UploadIcon /> Import CSV
+            </button>
+            <input
+              ref={fileRef}
+              type="file"
+              accept=".csv,text/csv"
+              className="sr-only"
+              aria-label="Import openings from a Radar CSV export"
+              onChange={(e) => {
+                onImport(e.target.files?.[0]);
+                e.target.value = "";
+              }}
+            />
           </div>
         }
       />
+
+      <div aria-live="polite">
+        {importResult?.error && (
+          <p role="alert" className="mt-6 flex items-start gap-2 text-danger"><AlertIcon className="mt-0.5 h-4 w-4 shrink-0" /> {importResult.error}</p>
+        )}
+        {importResult?.report && (
+          <section aria-label="Import result" className="mt-6 border border-line bg-paper p-5">
+            <div className="flex items-start justify-between gap-4">
+              <p className="flex items-center gap-2 text-lg">
+                <CheckIcon className="h-5 w-5 text-sunset" /> Restored {importResult.report.added} opening{importResult.report.added === 1 ? "" : "s"}.
+              </p>
+              <button type="button" onClick={() => setImportResult(null)} className="text-sm underline">Close</button>
+            </div>
+            {importResult.report.duplicates.length > 0 && (
+              <p className="mt-2 text-sm text-stormy">
+                Skipped {importResult.report.duplicates.length} already in Radar: {importResult.report.duplicates.slice(0, 5).join(", ")}
+                {importResult.report.duplicates.length > 5 ? "…" : ""}
+              </p>
+            )}
+            {importResult.report.failed.length > 0 && (
+              <div className="mt-2 text-sm text-danger">
+                <p>{importResult.report.failed.length} row{importResult.report.failed.length === 1 ? "" : "s"} couldn&apos;t be imported:</p>
+                <ul className="max-h-40 overflow-auto">{importResult.report.failed.map((f) => <li key={f.row}>Row {f.row}: {f.reason}</li>)}</ul>
+              </div>
+            )}
+          </section>
+        )}
+      </div>
 
       {state.openings.length === 0 ? (
         <div className="mt-8 border border-dashed border-cloud bg-paper p-8">
           <h2 className="text-2xl font-normal">No openings yet</h2>
           <p className="mt-2 text-stormy">
             Save one from <Link href="/live" className="text-evening underline">Live openings</Link>, or paste a job post you&apos;ve found
-            elsewhere and Radar will read it for you.
+            elsewhere and Radar will read it for you. Moving from another browser? Use Import CSV with a file from Export CSV.
           </p>
         </div>
       ) : (
