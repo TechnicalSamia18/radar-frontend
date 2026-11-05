@@ -7,6 +7,7 @@ import { DataGate, PageHeader } from "@/components/data-gate";
 import { Field } from "@/components/field";
 import { AlertIcon, CheckIcon, DownloadIcon, ExternalIcon, PlusIcon, UploadIcon } from "@/components/icons";
 import { CSV_TEMPLATE, importCompanies, MAX_IMPORT_BYTES, type ImportReport } from "@/lib/companies/csv";
+import { companiesCsv, downloadText } from "@/lib/openings/export";
 import { addCompany, companyFormSchema, companyFormToObject, findDuplicate, removeCompany, updateCompany } from "@/lib/companies/form";
 import type { Company, RadarState } from "@/lib/data/schema";
 import { newId, update } from "@/lib/data/store";
@@ -79,6 +80,14 @@ function Companies({ state }: { state: RadarState }) {
             </button>
             <button type="button" onClick={() => fileRef.current?.click()} className="label-caps inline-flex items-center gap-2 border border-evening px-5 py-3 hover:bg-evening hover:text-beige">
               <UploadIcon /> Import CSV
+            </button>
+            <button
+              type="button"
+              disabled={state.companies.length === 0}
+              onClick={() => downloadText(companiesCsv(state), `radar-companies-${new Date().toISOString().slice(0, 10)}.csv`)}
+              className="label-caps inline-flex items-center gap-2 border border-evening px-5 py-3 hover:bg-evening hover:text-beige disabled:opacity-50"
+            >
+              <DownloadIcon /> Export CSV
             </button>
             <input ref={fileRef} type="file" accept=".csv,text/csv" className="sr-only" aria-label="Import companies from a CSV file" onChange={(e) => { onImport(e.target.files?.[0]); e.target.value = ""; }} />
           </div>
