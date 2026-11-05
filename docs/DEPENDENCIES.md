@@ -1,7 +1,7 @@
 # Dependencies — Radar (frontend)
 
 Rule: newest patch on a supported line, at least 3 days old, no Critical/High advisory, exact pin, lockfile committed, free/open source only.
-Scan: `npm audit`.
+Scan: `npm run audit` (runs in CI on every push and pull request). It fails on any moderate-or-worse advisory in production dependencies, and on any High/Critical advisory in any dependency.
 
 | Package | Kind | Version | Why | License | Released | Last scan | Result |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -17,7 +17,7 @@ Scan: `npm audit`.
 | actions/checkout, actions/setup-node | CI | v7.0.1, v7.1.0 (pinned to commit SHA) | GitHub Actions CI | MIT | — | — | — |
 | eslint + eslint-config-next | dev | 9.39.5 / 16.4.3 | Lint | MIT | — | 2026-11-04 | 1 moderate (below) |
 
-## Open advisories (`npm audit`, 2026-11-04)
+## Open advisories (`npm audit`, 2026-11-05)
 | Advisory | Component | Severity | Reachable? | Action |
 | :--- | :--- | :--- | :--- | :--- |
 | [GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249) | minimatch <11.0.1 via ESLint 9 plugins | Moderate | No: slowdown on hostile glob patterns; lint only reads our own files; dev-only | Accept; re-check on ESLint upgrade |

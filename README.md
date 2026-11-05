@@ -67,12 +67,13 @@ The first run downloads two Google Fonts once (needs internet). The live opening
 
 | Command | What it does |
 |---|---|
-| `npm test` | 140 unit tests (Vitest): watcher parsing and filters, robots.txt, change detection, reading posts, dates, fit score, CSV import/export, storage |
-| `npm run test:e2e` | 33 page tests in Chromium at desktop and phone size (Playwright), using a fixed copy of the feed. First time: `npx playwright install chromium` |
+| `npm test` | 152 unit tests (Vitest): watcher parsing and filters, robots.txt, change detection, reading posts, dates, fit score, CSV import/export, storage |
+| `npm run test:e2e` | 39 page tests in Chromium at desktop and phone size (Playwright), using a fixed copy of the feed. First time: `npx playwright install chromium` |
 | `npm run lint` | ESLint |
 | `npm run build` | Production build (also type-checks) |
+| `npm run audit` | Known-vulnerability check: fails on any moderate-or-worse advisory in code shipped to the browser, or any High/Critical one in any dependency |
 
-GitHub Actions runs two workflows: **CI** on every push (lint, unit tests, build, page tests) and the **Daily watcher** every morning at 06:17 Pakistan time.
+GitHub Actions runs two workflows: **CI** on every push and pull request (dependency audit, lint, unit tests, build, page tests) and the **Daily watcher** every morning at 06:17 Pakistan time.
 
 ## How it's built
 
