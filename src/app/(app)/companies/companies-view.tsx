@@ -2,7 +2,7 @@
 // Companies (PRD screen 4): list with careers-source status, add by hand,
 // edit (incl. your own careers link, REQ-013), remove, and CSV import.
 import { useRef, useState, type FormEvent } from "react";
-import { companyStatus, TONE_CLASS } from "@/components/company-status";
+import { companyStatus, TONE_CLASS } from "@/lib/companies/status";
 import { DataGate, PageHeader } from "@/components/data-gate";
 import { Field } from "@/components/field";
 import { AlertIcon, CheckIcon, DownloadIcon, ExternalIcon, PlusIcon, UploadIcon } from "@/components/icons";

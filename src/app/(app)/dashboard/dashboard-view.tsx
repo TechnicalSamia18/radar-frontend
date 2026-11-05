@@ -2,7 +2,7 @@
 // Dashboard (REQ-050): greeting, four numbers, best-fit openings, watched companies.
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { companyStatus, TONE_CLASS } from "@/components/company-status";
+import { companyStatus, TONE_CLASS } from "@/lib/companies/status";
 import { DataGate } from "@/components/data-gate";
 import { ClockIcon, PlusIcon } from "@/components/icons";
 import { OpeningCard } from "@/components/opening-card";
