@@ -2,6 +2,9 @@
 
 **Real openings from Pakistani software houses, and exactly how you fit.**
 
+[![CI](https://github.com/TechnicalSamia18/radar-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/TechnicalSamia18/radar-frontend/actions/workflows/ci.yml)
+[![Daily watcher](https://github.com/TechnicalSamia18/radar-frontend/actions/workflows/watch.yml/badge.svg)](https://github.com/TechnicalSamia18/radar-frontend/actions/workflows/watch.yml)
+
 Radar checks Pakistani software houses every morning. When a company publishes its jobs openly, Radar brings in the real openings, scores each one against your resume, explains the score, warns you about eligibility catches, and tracks your application until you hear back. Openings you find anywhere else can be pasted in and get the same treatment.
 
 The website runs **in your browser**: no account, no server, no database. Your resume is read on your device and never uploaded. The daily check is a small free job on GitHub Actions.

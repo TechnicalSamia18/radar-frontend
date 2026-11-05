@@ -116,6 +116,9 @@ export function SiteFooter() {
           <Link href="/how-it-works" className="hover:text-beige">How it works</Link>
           <Link href="/about" className="hover:text-beige">About</Link>
           <Link href="/live" className="hover:text-beige">Today&apos;s openings</Link>
+          <a href="https://github.com/TechnicalSamia18/radar-frontend" target="_blank" rel="noopener noreferrer" className="hover:text-beige">
+            Source code<span className="sr-only"> (opens GitHub in a new tab)</span>
+          </a>
         </nav>
       </div>
     </footer>
