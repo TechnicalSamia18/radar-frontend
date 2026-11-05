@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { DataGate, PageHeader } from "@/components/data-gate";
+import { FeedHealth } from "@/components/feed-health";
 import { AlertIcon } from "@/components/icons";
 import { LiveCard } from "@/components/live-card";
 import type { RadarState } from "@/lib/data/schema";
@@ -106,9 +107,7 @@ function Live({ state }: { state: RadarState }) {
           Add your resume to see how well you fit each one. <Link href="/profile" className="text-evening underline">Upload your resume</Link>
         </p>
       )}
-      {!openings.complete && (
-        <p className="mt-4 text-sm text-danger">The last check stopped early; some companies show yesterday&apos;s results.</p>
-      )}
+      <FeedHealth openings={openings} companies={companies} now={now} />
 
       <form role="search" aria-label="Filter live openings" onSubmit={(e) => e.preventDefault()} className="mt-6 flex flex-wrap items-end gap-3 border border-line bg-paper p-4">
         <div className="min-w-48 flex-1">

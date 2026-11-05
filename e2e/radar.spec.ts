@@ -178,6 +178,14 @@ test.describe("live openings from the daily watcher", () => {
     await expect(page.getByRole("link", { name: /Add a company to watch/ })).toHaveAttribute("href", /github\.com\/.*data\/companies\.json/);
   });
 
+  test("warns when the daily check looks stopped", async ({ page }) => {
+    await page.unrouteAll();
+    await mockFeed(page, { checkedAt: new Date(Date.now() - 5 * 24 * 3600 * 1000).toISOString() });
+    await page.goto("/live");
+    await expect(page.getByText("Live openings may be out of date")).toBeVisible();
+    await expect(page.getByText(/last checked 5 days ago/)).toBeVisible();
+  });
+
   test("a feed that can't load shows an error with Try again", async ({ page }) => {
     await page.unrouteAll();
     await mockFeed(page, { fail: true });
