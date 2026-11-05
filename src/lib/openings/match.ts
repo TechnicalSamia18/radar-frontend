@@ -54,7 +54,8 @@ export function eligibilityWarnings(o: MatchInput, profile: Profile | null, now:
   }
   if (o.experienceYears !== null && o.experienceYears >= 1) {
     w.push(`Asks for ${o.experienceYears}+ year${o.experienceYears === 1 ? "" : "s"} of experience.`);
-  } else if (SENIOR_TITLE.test(o.title)) {
+  }
+  if (SENIOR_TITLE.test(o.title)) {
     w.push("It's a senior role, so the fit is capped: these usually need several years of experience.");
   }
   if (profile && o.location && o.workMode !== "remote" && profile.cities.length > 0 && !profile.cities.includes(o.location as never)) {

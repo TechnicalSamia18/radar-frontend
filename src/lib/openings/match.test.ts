@@ -104,6 +104,15 @@ describe("seniority and thin evidence", () => {
   });
 });
 
+describe("senior roles that also state years", () => {
+  it("show both the experience warning and why the fit is capped", () => {
+    const fit = matchOpening({ ...base, title: "Senior Backend Engineer", type: "job", experienceYears: 4 }, profile, NOW);
+    expect(fit.kind === "scored" && fit.warnings).toEqual(
+      expect.arrayContaining(["Asks for 4+ years of experience.", "It's a senior role, so the fit is capped: these usually need several years of experience."]),
+    );
+  });
+});
+
 describe("fitLevel", () => {
   it("splits at 70 and 45", () => {
     expect([fitLevel(70), fitLevel(69), fitLevel(45), fitLevel(44)]).toEqual(["good", "fair", "fair", "low"]);

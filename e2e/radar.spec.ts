@@ -1,22 +1,27 @@
 import { expect, test } from "@playwright/test";
-import { loadDemo, openAppNav } from "./helpers";
+import { loadDemo, mockFeed, openAppNav, setProfile } from "./helpers";
 
-// Every test starts with empty browser storage (Playwright gives each test a new context).
+// Every test starts with empty browser storage (Playwright gives each test a new context)
+// and sees the same small, fixed live feed.
+test.beforeEach(async ({ page }) => {
+  await mockFeed(page);
+});
 
-test("first visit shows the empty dashboard with next steps", async ({ page }) => {
+test("first visit shows live openings and the next steps", async ({ page }) => {
   await page.goto("/dashboard");
-  await expect(page.getByRole("heading", { name: "Nothing here yet" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Try the demo" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Live openings for you/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Software Engineer - MERN" })).toBeVisible();
+  await expect(page.getByText("Fit unknown").first()).toBeVisible(); // no resume yet
+  await expect(page.getByRole("heading", { name: "You're not tracking anything yet" })).toBeVisible();
 });
 
 test("demo fills the dashboard and can be exited", async ({ page }) => {
   await loadDemo(page);
-  await expect(page.getByRole("heading", { name: "Openings for you" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Saved, not applied yet" })).toBeVisible();
   await expect(page.getByText("100% fit").first()).toBeVisible();
-  await expect(page.getByText("Couldn't reach site 3 times. Check the link.")).toBeVisible();
   page.once("dialog", (d) => d.accept());
   await page.getByRole("button", { name: "Exit demo" }).click();
-  await expect(page.getByRole("heading", { name: "Nothing here yet" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "You're not tracking anything yet" })).toBeVisible();
 });
 
 test("paste a post, check the details, save, and track it", async ({ page }) => {
@@ -97,14 +102,14 @@ test("damaged saved data shows a clear error and can be reset", async ({ page })
   await expect(page.getByText("Radar's saved data is damaged and can't be read.")).toBeVisible();
   page.once("dialog", (d) => d.accept());
   await page.getByRole("button", { name: "Start fresh" }).click();
-  await expect(page.getByRole("heading", { name: "Nothing here yet" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "You're not tracking anything yet" })).toBeVisible();
 });
 
 test("navigation works on every screen size and marks the current page", async ({ page }) => {
   await loadDemo(page);
   await openAppNav(page);
   await page.getByRole("link", { name: "Companies" }).click();
-  await expect(page.getByRole("heading", { name: "Software houses you're watching" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Software houses on your radar" })).toBeVisible();
   await openAppNav(page);
   await expect(page.getByRole("link", { name: "Companies" })).toHaveAttribute("aria-current", "page");
 });
@@ -123,4 +128,61 @@ test("unknown pages show the 404 screen", async ({ page }) => {
   const res = await page.goto("/no-such-page");
   expect(res?.status()).toBe(404);
   await expect(page.getByRole("heading", { name: "Nothing on the radar here" })).toBeVisible();
+});
+
+test.describe("live openings from the daily watcher", () => {
+  test("are scored against your profile, best fit first, senior roles capped", async ({ page }) => {
+    await setProfile(page, ["JavaScript", "React", "Node.js", "Express", "MongoDB", "Git", "HTML", "CSS"]);
+    await page.goto("/live");
+    await expect(page.getByText("Showing 3 of 3 live openings")).toBeVisible();
+    const titles = page.locator("article h3");
+    await expect(titles.first()).toContainText("Software Engineer - MERN");
+    await expect(titles.first()).toContainText("New");
+    const lead = page.locator("article", { hasText: "Lead Support Engineer" });
+    await expect(lead.getByText(/so the fit is capped|more/).first()).toBeVisible(); // shown, or behind "+N more"
+    await expect(lead).toContainText("(low)"); // senior roles never rate above "low"
+    await page.getByLabel("Entry-level only").check();
+    await expect(page.getByText("Showing 1 of 3 live openings")).toBeVisible();
+  });
+
+  test("can be saved to My openings and tracked", async ({ page }) => {
+    await page.goto("/live");
+    const card = page.locator("article", { hasText: "Software Engineer (Entry-level)" });
+    await card.getByRole("button", { name: "Save to my openings" }).click();
+    await card.getByRole("link", { name: /Saved · track it/ }).click();
+    await expect(page.getByRole("heading", { name: "Software Engineer (Entry-level)" })).toBeVisible();
+    await page.getByRole("button", { name: "Mark applied" }).click();
+    await expect(page.getByText("Status changed to Applied.")).toBeVisible();
+  });
+
+  test("can be hidden and brought back", async ({ page }) => {
+    await page.goto("/live");
+    await page.locator("article", { hasText: "Lead Support Engineer" }).getByRole("button", { name: "Not interested" }).click();
+    await expect(page.getByText("Showing 2 of 3 live openings")).not.toBeVisible(); // notice replaces the count…
+    await expect(page.locator("article")).toHaveCount(2);
+    await page.getByRole("button", { name: "Undo" }).click();
+    await expect(page.locator("article")).toHaveCount(3);
+  });
+
+  test("the dashboard flags careers pages that changed", async ({ page }) => {
+    await page.goto("/dashboard");
+    await expect(page.getByRole("heading", { name: "Careers pages that changed this week" })).toBeVisible();
+    const changed = page.locator("li", { hasText: "Folio3" }).filter({ has: page.getByRole("link", { name: "Have a look" }) });
+    await expect(changed).toBeVisible();
+  });
+
+  test("companies page shows what the watcher found", async ({ page }) => {
+    await page.goto("/companies");
+    await expect(page.getByRole("heading", { name: /Checked every morning \(6\)/ })).toBeVisible();
+    await expect(page.getByText(/live openings? · Workable/)).toBeVisible();
+    await expect(page.getByRole("link", { name: /Add a company to watch/ })).toHaveAttribute("href", /github\.com\/.*data\/companies\.json/);
+  });
+
+  test("a feed that can't load shows an error with Try again", async ({ page }) => {
+    await page.unrouteAll();
+    await mockFeed(page, { fail: true });
+    await page.goto("/live");
+    await expect(page.getByText("Couldn't load live openings. Check your connection and try again.")).toBeVisible();
+    await expect(page.getByRole("button", { name: "Try again" })).toBeVisible();
+  });
 });
