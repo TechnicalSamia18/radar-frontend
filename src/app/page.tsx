@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { RadarGraphic } from "@/components/radar-graphic";
-import { SiteHeader } from "@/components/site-header";
+import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { ShieldIcon, UploadIcon } from "@/components/icons";
 
 const STEPS = [
@@ -63,39 +63,24 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── How it works ───────────────────────────────── */}
-      <section id="how" className="scroll-mt-6 bg-beige">
-        <div className="mx-auto max-w-6xl px-6 py-14 sm:px-10">
-          <h2 className="label-caps text-sunset">How it works</h2>
-          <ol className="mt-8 grid gap-10 md:grid-cols-3">
-            {STEPS.map((s) => (
-              <li key={s.n}>
-                <span className="text-5xl text-stormy" aria-hidden="true">{s.n}</span>
-                <h3 className="label-caps mt-4 text-base text-evening">{s.title}</h3>
-                <p className="mt-3 leading-relaxed text-stormy">{s.body}</p>
-              </li>
-            ))}
-          </ol>
+      {/* ── Short teaser linking to the separate pages ───── */}
+      <section className="bg-beige">
+        <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:px-10 md:grid-cols-3">
+          {STEPS.map((s) => (
+            <div key={s.n}>
+              <span className="text-5xl text-stormy" aria-hidden="true">{s.n}</span>
+              <h2 className="label-caps mt-4 text-base text-evening">{s.title}</h2>
+              <p className="mt-3 leading-relaxed text-stormy">{s.body}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mx-auto max-w-6xl px-6 pb-14 sm:px-10">
+          <Link href="/how-it-works" className="label-caps group inline-flex items-center gap-2 text-sunset">
+            See how it works <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+          </Link>
         </div>
       </section>
-
-      {/* ── About ──────────────────────────────────────── */}
-      <section id="about" className="scroll-mt-6 bg-sand">
-        <div className="mx-auto max-w-6xl px-6 py-14 sm:px-10">
-          <h2 className="label-caps text-sunset">About</h2>
-          <div className="mt-6 grid gap-8 text-stormy md:grid-cols-2">
-            <p className="leading-relaxed">
-              Openings at smaller Pakistani software houses are scattered across company websites and private groups.
-              Radar is a personal tool, built by a CS student, to keep the ones you find in one place and see where
-              you stand.
-            </p>
-            <p className="leading-relaxed">
-              Everything runs in your browser: your resume, profile and applications are stored on your device, not on
-              a server. Radar never fills in or submits an application for you.
-            </p>
-          </div>
-        </div>
-      </section>
+      <SiteFooter />
     </main>
   );
 }
