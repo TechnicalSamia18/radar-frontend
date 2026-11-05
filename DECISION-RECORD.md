@@ -57,14 +57,14 @@ A small program (the "watcher") runs once a day at 06:17 Pakistan time on GitHub
 
 ### What it costs
 - **Results are up to a day old.** An opening posted at 9am appears the next morning. Fine for internships, which stay open for weeks; not fine for anything time-critical.
-- **The repository fills with automated commits.** One "data: daily watcher update" commit a day, authored by `github-actions[bot]` rather than by me. This clutters the history reviewers read, and the repository grows a little each day, because git keeps every old version of the data files.
+- **The repository fills with automated commits.** One "data: daily watcher update" commit a day. This clutters the history reviewers read, and the repository grows a little each day, because git keeps every old version of the data files.
 - **It depends on GitHub keeping the schedule running.** According to GitHub's documentation, in a public repository scheduled workflows are switched off automatically when there has been no repository activity for 60 days. If I stop working on the project for two months, Radar silently stops updating. The daily bot commits don't reliably count as activity, and the site would keep showing old openings without saying so loudly.
 - **Two moving parts must agree.** GitHub runs the watcher and the hosting service (Vercel) publishes the site. If either misbehaves, the site can show stale data with no error.
 - **Why it's expensive to reverse:** the website, the tests and the watcher all assume "the results are two JSON files at a fixed address". Moving to a database means changing all three and finding a free place to run the job.
 
 ### How it proved awkward
 - **The very first run checked zero companies.** The list of companies sat in a folder that an old rule (left over from the database version) told git to ignore, so it never reached GitHub. The job reported success with nothing done. Because results flow through commits, a mistake in what gets committed is a silent failure. I added a test that simulates every site failing, but nothing yet alerts me when a run checks suspiciously few companies.
-- **Authorship.** I wanted every commit in the repository to be mine. The data commits can't be, because they're made by the automation. I accepted that and documented it, but it's a visible compromise.
+- **Authorship.** I wanted every commit in the repository under my name. The first data commits were made as `github-actions[bot]`, which then appeared as a second contributor. I changed the job to commit under my name, but that means automated commits now look like mine; the "data: daily watcher update" message is the only thing that tells them apart.
 
 ---
 

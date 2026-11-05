@@ -26,8 +26,8 @@ jobs:
       - run: node scripts/watcher/watch.mjs
       - name: Commit the updated feed (only if something changed)
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "Samia Rehman"
+          git config user.email "samia.rehman246@gmail.com"
           git add public/feed
           if git diff --cached --quiet; then echo "No changes."; exit 0; fi
           git commit -m "data: daily watcher update ($(date -u +%Y-%m-%d))"
