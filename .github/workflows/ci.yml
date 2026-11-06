@@ -1,4 +1,4 @@
-# Runs every check on each push: lint, types, unit tests, production build,
+# Runs every check on each push: dependency audit, lint, types, unit tests, production build,
 # and the page tests in Chromium (desktop + phone) against that build.
 name: CI
 on:
@@ -18,6 +18,9 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Fails on any known advisory (moderate or worse) in code shipped to the
+      # browser, and on High/Critical anywhere, including build and test tools.
+      - run: npm run audit
       - run: npm run lint
       - run: npm test
       - run: npm run build # also type-checks
