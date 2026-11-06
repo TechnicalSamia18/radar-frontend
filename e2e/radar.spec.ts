@@ -140,6 +140,13 @@ test("keyboard users can skip straight to the content", async ({ page, isMobile 
   await expect(page).toHaveURL(/#main$/);
 });
 
+test("the dashboard says how long ago the openings were checked", async ({ page }) => {
+  await page.unrouteAll();
+  await mockFeed(page, { checkedAt: new Date(Date.now() - 3 * 3600 * 1000 - 60_000).toISOString() });
+  await page.goto("/dashboard");
+  await expect(page.getByText("3 hours ago")).toBeVisible();
+});
+
 test("the home page links to the source code", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("link", { name: /Source code/ })).toHaveAttribute("href", "https://github.com/TechnicalSamia18/radar-frontend");

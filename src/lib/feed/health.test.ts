@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { feedProblems } from "./health";
+import { checkedAgo, feedProblems } from "./health";
 import type { CompaniesFeed, OpeningsFeed, WatchedCompany } from "./schema";
 
 const NOW = new Date("2026-11-05T12:00:00Z");
@@ -30,5 +30,21 @@ describe("feedProblems", () => {
     expect(feedProblems(...feeds("2026-11-05T01:17:00Z", [company("unreachable"), company("unreachable"), company("feed")]), NOW)).toEqual([
       "2 of 3 companies couldn't be reached on the last check.",
     ]);
+  });
+});
+
+describe("checkedAgo", () => {
+  const ago = (ms: number) => checkedAgo(new Date(NOW.getTime() - ms).toISOString(), NOW);
+  it("says just now for under a minute, and for a time in the future", () => {
+    expect(ago(30_000)).toBe("just now");
+    expect(ago(-5 * 60_000)).toBe("just now");
+  });
+  it("uses minutes, hours, then days, with singular and plural", () => {
+    expect(ago(60_000)).toBe("1 minute ago");
+    expect(ago(59 * 60_000)).toBe("59 minutes ago");
+    expect(ago(60 * 60_000)).toBe("1 hour ago");
+    expect(ago(23.9 * 3_600_000)).toBe("23 hours ago");
+    expect(ago(24 * 3_600_000)).toBe("1 day ago");
+    expect(ago(5 * 24 * 3_600_000)).toBe("5 days ago");
   });
 });
