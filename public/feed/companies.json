@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-08T07:25:38.067Z",
+  "generatedAt": "2026-11-09T08:00:21.264Z",
   "complete": true,
   "companies": [
     {
@@ -17,7 +17,7 @@
         "Cloud & DevOps"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -34,7 +34,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -53,7 +53,7 @@
         "Internship/MTO"
       ],
       "imageAd": true,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -70,7 +70,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -89,7 +89,7 @@
         "Functional Consultant"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": "This page may load its jobs with JavaScript; open it to check."
     },
@@ -106,7 +106,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": "Workable board \"devsinc-17\""
     },
@@ -129,7 +129,7 @@
         "Principal Java Engineer"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -146,7 +146,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -167,7 +167,7 @@
         "IT Network & Support Intern"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -184,7 +184,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": "This page may load its jobs with JavaScript; open it to check."
     },
@@ -201,7 +201,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -211,16 +211,16 @@
       "website": "https://www.i2cinc.com",
       "careersUrl": "https://www2.i2cinc.com/pymnts-emerging-middle-market-research-report",
       "platform": null,
-      "source": "careers_page",
+      "source": "unreachable",
       "openings": 0,
       "emails": [],
       "pageHash": "fc129692d5227c36",
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
-      "failures": 0,
-      "note": null
+      "lastChecked": "2026-11-09T08:00:21.264Z",
+      "failures": 1,
+      "note": "Couldn't reach the site (ECONNRESET)"
     },
     {
       "name": "Afiniti",
@@ -237,7 +237,7 @@
         "Associate General Counsel, Commercial Contracts"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -256,7 +256,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": true,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -276,7 +276,7 @@
         "Cloud & DevOps"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -300,7 +300,7 @@
         "Associate Vice President"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -317,7 +317,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -341,7 +341,7 @@
         "UI/UX Designer"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -358,7 +358,7 @@
       "pageChangedAt": "2026-11-07T07:14:12.491Z",
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -381,7 +381,7 @@
         "Data Engineer"
       ],
       "imageAd": true,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -398,8 +398,8 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
-      "failures": 7,
+      "lastChecked": "2026-11-09T08:00:21.264Z",
+      "failures": 8,
       "note": "Couldn't reach the site (403)"
     },
     {
@@ -415,7 +415,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -432,7 +432,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -449,7 +449,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -466,7 +466,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": "This page may load its jobs with JavaScript; open it to check."
     },
@@ -483,7 +483,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": "Greenhouse board \"gomotive\""
     },
@@ -500,7 +500,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -520,7 +520,7 @@
         "Bazaar Internship Program 2024"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -537,7 +537,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": "This page may load its jobs with JavaScript; open it to check."
     },
@@ -554,8 +554,8 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
-      "failures": 7,
+      "lastChecked": "2026-11-09T08:00:21.264Z",
+      "failures": 8,
       "note": "Greenhouse board \"sadapay\": feed 404"
     },
     {
@@ -571,7 +571,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": "Lever board \"educative\""
     },
@@ -588,7 +588,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -607,7 +607,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -635,7 +635,7 @@
         "Designer 2D & 3D Design"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -652,7 +652,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -671,7 +671,7 @@
         "DevOps"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -688,7 +688,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -705,7 +705,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -722,7 +722,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": "This page may load its jobs with JavaScript; open it to check."
     },
@@ -742,7 +742,7 @@
         "Information Security Engineer"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -759,7 +759,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -776,7 +776,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
+      "lastChecked": "2026-11-09T08:00:21.264Z",
       "failures": 0,
       "note": null
     },
@@ -793,8 +793,8 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-08T07:25:38.067Z",
-      "failures": 3,
+      "lastChecked": "2026-11-09T08:00:21.264Z",
+      "failures": 4,
       "note": "Couldn't reach the site (403)"
     }
   ]
