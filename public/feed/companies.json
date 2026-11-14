@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T08:03:25.234Z",
+  "generatedAt": "2026-11-14T07:38:00.023Z",
   "complete": true,
   "companies": [
     {
@@ -17,7 +17,7 @@
         "Cloud & DevOps"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -34,7 +34,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -53,7 +53,7 @@
         "Internship/MTO"
       ],
       "imageAd": true,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -70,7 +70,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -83,15 +83,16 @@
       "source": "careers_page",
       "openings": 0,
       "emails": [],
-      "pageHash": "ba5a3eedba73db59",
-      "pageChangedAt": "2026-11-12T08:23:10.347Z",
+      "pageHash": "692f50d962ac484e",
+      "pageChangedAt": "2026-11-14T07:38:00.023Z",
       "possibleRoles": [
+        "Microsoft Power Automate / RPA Developer",
         "Functional Consultant",
         "IT Support Engineer",
         "Trainee Functional Consultant – Dynamics"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -108,7 +109,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": "Workable board \"devsinc-17\""
     },
@@ -131,7 +132,7 @@
         "Senior Network & Security Engineer"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -148,7 +149,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -169,7 +170,7 @@
         "IT Network & Support Intern"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -182,8 +183,8 @@
       "source": "careers_page",
       "openings": 0,
       "emails": [],
-      "pageHash": "4f1851e9ca3e77ab",
-      "pageChangedAt": "2026-11-11T07:46:52.993Z",
+      "pageHash": "8b57f4e898296c31",
+      "pageChangedAt": "2026-11-14T07:38:00.023Z",
       "possibleRoles": [
         "Staff Backend Engineer",
         "Senior AI Engineer",
@@ -191,7 +192,7 @@
         "Senior Golang Engineer"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -208,7 +209,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -225,7 +226,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -244,7 +245,7 @@
         "Associate General Counsel, Commercial Contracts"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -263,7 +264,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": true,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -283,7 +284,7 @@
         "Cloud & DevOps"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -307,7 +308,7 @@
         "Associate Vice President"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -324,7 +325,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -337,8 +338,8 @@
       "source": "careers_page",
       "openings": 0,
       "emails": [],
-      "pageHash": "866228c76267a308",
-      "pageChangedAt": "2026-11-13T08:03:25.234Z",
+      "pageHash": "241cb70678c8cc0b",
+      "pageChangedAt": "2026-11-14T07:38:00.023Z",
       "possibleRoles": [
         "Junior DevOps Engineer",
         "DevOps",
@@ -347,7 +348,7 @@
         "UI/UX Designer"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -364,7 +365,7 @@
       "pageChangedAt": "2026-11-07T07:14:12.491Z",
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -387,7 +388,7 @@
         "Data Engineer"
       ],
       "imageAd": true,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -404,8 +405,8 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
-      "failures": 12,
+      "lastChecked": "2026-11-14T07:38:00.023Z",
+      "failures": 13,
       "note": "Couldn't reach the site (403)"
     },
     {
@@ -421,7 +422,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -438,7 +439,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -455,7 +456,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -472,7 +473,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": "This page may load its jobs with JavaScript; open it to check."
     },
@@ -489,7 +490,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": "Greenhouse board \"gomotive\""
     },
@@ -499,14 +500,14 @@
       "website": "https://www.careem.com",
       "careersUrl": "https://www.careem.com/en-ae/careers/",
       "platform": null,
-      "source": "nothing_found",
+      "source": "careers_page",
       "openings": 0,
       "emails": [],
       "pageHash": "832cf92b5a0943f5",
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -526,7 +527,7 @@
         "Bazaar Internship Program 2024"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -543,7 +544,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": "This page may load its jobs with JavaScript; open it to check."
     },
@@ -560,8 +561,8 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
-      "failures": 12,
+      "lastChecked": "2026-11-14T07:38:00.023Z",
+      "failures": 13,
       "note": "Greenhouse board \"sadapay\": feed 404"
     },
     {
@@ -577,7 +578,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": "Lever board \"educative\""
     },
@@ -594,7 +595,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -613,7 +614,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -641,7 +642,7 @@
         "Designer 2D & 3D Design"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -658,7 +659,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -677,7 +678,7 @@
         "DevOps"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -694,7 +695,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -711,7 +712,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -728,7 +729,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": "This page may load its jobs with JavaScript; open it to check."
     },
@@ -748,7 +749,7 @@
         "Information Security Engineer"
       ],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -765,7 +766,7 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -778,11 +779,11 @@
       "source": "careers_page",
       "openings": 0,
       "emails": [],
-      "pageHash": "cf290b57fb95e85b",
-      "pageChangedAt": null,
+      "pageHash": "192f467d56989d34",
+      "pageChangedAt": "2026-11-14T07:38:00.023Z",
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
+      "lastChecked": "2026-11-14T07:38:00.023Z",
       "failures": 0,
       "note": null
     },
@@ -799,8 +800,8 @@
       "pageChangedAt": null,
       "possibleRoles": [],
       "imageAd": false,
-      "lastChecked": "2026-11-13T08:03:25.234Z",
-      "failures": 8,
+      "lastChecked": "2026-11-14T07:38:00.023Z",
+      "failures": 9,
       "note": "Couldn't reach the site (403)"
     }
   ]
