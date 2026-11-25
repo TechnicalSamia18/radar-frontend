@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T10:59:01.290Z",
+  "generatedAt": "2026-11-25T09:53:46.026Z",
   "complete": true,
   "items": [
     {
@@ -60,18 +60,6 @@
       "postedAt": "2026-11-05",
       "firstSeen": "2026-11-06T07:57:15.733Z",
       "description": "Devsinc is on the lookout for a highly motivated Associate Team Lead- Data Engineer to join our dynamic data team. In this pivotal role, you will be responsible for building and optimizing data pipelines that transform raw data into valuable insights and facilitate data-driven decision-making. Your ability to work collaboratively with cross-functional teams and your expertise in data engineering will play a key role in shaping our data architecture and ensuring the integrity and accessibility of our data.\n Key Responsibilities: \n - Design, develop, and enhance scalable data pipelines and data models to streamline the extraction, transformation, and loading (ETL) processes.\n- Collaborate with data scientists, analysts, and stakeholders to define data requirements and deliver robust data solutions that align with business goals.\n- Ensure data quality, consistency, and accuracy by implementing validation and testing mechanisms.\n- Utilize cloud services and data warehousing solutions to efficiently store and manage large volumes of data.\n- Monitor and troubleshoot production data pipelines, providing timely resolutions to issues affecting data availability.\n- Contribute to data governance initiatives by enforcing best practices related to data security, privacy, and compliance.\n- Stay updated with industry trends and emerging technologies in the data engineering space.\n Requirements \n - Bachelor’s degree in Computer Science, Data Engineering, or a related field.\n- 4+ years of experience in data engineering or a related role, with a proven track record in building data pipelines.\n- Strong knowledge and experience in SQL and relational databases (e.g., PostgreSQL, MySQL).\n- Familiarity with ETL tools and technologies (e.g., Apache Airflow, Talend, AWS Glue).\n- Proficiency in programming languages such as Python or Scala for data processing.\n- Hands-on experience with cloud platforms (AWS, Azure, GCP) and their data services.\n- Understanding of data warehousing concepts and experience with data storage technologies (e.g., Snowflake, Redshift).\n- Excellent problem-solving skills with a focus on data integrity and performance optimization.\n- Strong communication skills, with the ability to convey technical concepts to non-technical stakeholders.\n- A collaborative spirit, with a willingness to work closely with team members across various functions.\n- A proactive approach to learning new tools and technologies in the data ecosystem.",
-      "source": "Workable"
-    },
-    {
-      "id": "workable:devsinc-17:B706EF615D",
-      "companyName": "Devsinc",
-      "companyCity": "Lahore",
-      "title": "Cloud Technical Consultant",
-      "location": "Lahore · Pakistan",
-      "url": "https://apply.workable.com/j/B706EF615D/apply",
-      "postedAt": "2026-09-02",
-      "firstSeen": "2026-11-05T05:04:08.605Z",
-      "description": "We are looking for an experienced Cloud Technical Consultant with strong expertise in Microsoft Dynamics 365, Azure, DevOps, and Infrastructure as Code.\n Requirements \n Key Requirements\n - Dynamics 365 Implementation: Must have completed 2+ end-to-end Dynamics 365 implementations.\n - Retail Commerce: Hands-on experience with Dynamics 365 Commerce / Retail Store Commerce deployment.\n - Dynamics 365 CE: Strong experience implementing Dynamics 365 Customer Engagement (CE) in both Cloud and On-Premises environments.\n - Dynamics AX to D365 Migration: Experience with end-to-end migration projects from Dynamics AX R2/R3 to Dynamics 365.\n - Azure DevOps: Hands-on experience with Azure DevOps CI/CD pipelines.\n - Infrastructure as Code: Practical experience with Azure Bicep and Terraform for infrastructure deployment and automation.\n - Azure Services: Strong knowledge of Azure services, particularly Compute, Storage, and Landing Zones.\n - Communication: Must have fluent spoken English with strong communication and client-facing skills.\n - Azure (AZ-104 l AZ-400) Certification candidate must be preferred.\n Ideal Candidate:\n A technically strong consultant who can work across Dynamics 365, Azure infrastructure, DevOps, and cloud migration, and has experience delivering enterprise projects from design through implementation and deployment.",
       "source": "Workable"
     },
     {
@@ -264,18 +252,6 @@
       "postedAt": "2026-10-01",
       "firstSeen": "2026-11-05T05:04:08.605Z",
       "description": "Devsinc is seeking a passionate Software Engineer (ROR) to join our growing development team. In this role, you will be responsible for developing and maintaining high-quality web applications using Ruby on Rails for the back-end and React for the front-end. You will collaborate with cross-functional teams to deliver effective solutions that not only meet client specifications but also enhance user experience.\n Responsibilities :\n - Develop and maintain server-side applications using Ruby on Rails.\n - Build responsive and dynamic interfaces using React.js.\n - Collaborate with designers and product managers to translate UI/UX requirements into functional applications.\n - Integrate user-facing elements with server-side logic and build RESTful APIs.\n - Ensure application performance, quality, and responsiveness by writing clean, maintainable code.\n - Conduct code reviews to ensure adherence to best practices and coding standards.\n - Identify and address performance bottlenecks, bugs, and other technical issues.\n - Stay updated with emerging technologies and industry trends to enhance development processes\n Requirements \n - Bachelor's degree in Computer Science, Software Engineering, or a related field.\n - 1-3 years of experience in web development with a focus on Ruby on Rails and React.\n - Strong understanding of web development principles and architecture.\n - Proficiency in JavaScript, HTML, CSS, and modern JavaScript frameworks.\n - Experience with RESTful APIs and integrating front-end applications with back-end logic.\n - Familiarity with databases such as PostgreSQL or MySQL.\n - Experience with version control systems, preferably Git.\n - Excellent problem-solving skills and a keen attention to detail.\n - Strong written and verbal communication skills.",
-      "source": "Workable"
-    },
-    {
-      "id": "workable:devsinc-17:DA41CF8008",
-      "companyName": "Devsinc",
-      "companyCity": "Lahore",
-      "title": "Software Engineering Intern",
-      "location": "Lahore · Pakistan",
-      "url": "https://apply.workable.com/j/DA41CF8008/apply",
-      "postedAt": "2026-11-17",
-      "firstSeen": "2026-11-17T09:15:39.961Z",
-      "description": "We are looking for motivated and enthusiastic Software Engineering Interns who are eager to learn, develop their technical skills, and gain hands-on experience working on real-world software development projects. The ideal candidate should have a basic understanding of programming concepts, problem-solving skills, and a passion for technology.\n Requirements \n - Bachelor's degree in Computer Science, Software Engineering, IT, or a relevant field (completed or currently enrolled).\n- Basic understanding of programming concepts and OOP.\n- Familiarity with at least one programming language (JavaScript, Python, Java, C#, etc.).\n- Basic knowledge of databases and data structures.\n- Understanding of Git and version control is a plus.\n- Strong problem-solving and analytical skills.\n- Good communication and teamwork skills.\n- Willingness to learn and adapt to new technologies.",
       "source": "Workable"
     },
     {
